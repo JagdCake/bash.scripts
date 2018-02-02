@@ -13,13 +13,14 @@
 
 # applications to look for
 apps=(mpv hl2_linux CompanyOfHeroes2)
+arraylength=${#apps[@]}
 
 # loop indefinitely (this doesn't seem good)
 while true;
 do
 # if any of the apps are running assign '1' to the var, if not assign '0' (only one app can run at a time)
 # iterate over the array items
-for i in "${apps[@]}"
+for (( i=0; i<${arraylength}; i++ ));
 do
 	check=`ps -ef | grep ${apps[$i]} | grep -v "grep" | wc -l`
 done
