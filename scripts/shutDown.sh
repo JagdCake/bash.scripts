@@ -4,7 +4,7 @@
 # ===================
 
 # array of applications to close
-apps=(tixati, chrome, steam) 
+apps=(tixati chrome steam) 
 
 # using SIGTERM to allow programs to exit cleanly
 # the wildcard (*) selects all array items
