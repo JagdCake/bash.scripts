@@ -3,11 +3,12 @@
 # Closing applications
 # ===================
 
+# array of applications to close
+apps=(tixati, chrome, steam) 
+
 # using SIGTERM to allow programs to exit cleanly
-# single quotes print out a literal string
-kill -s SIGTERM `pidof tixati`; echo 'Exiting Tixati...'
-kill -s SIGTERM `pidof chrome`; echo 'Exiting Chrome...'
-kill -s SIGTERM `pidof steam`; echo 'Exiting Steam...'
+# the wildcard (*) selects all array items
+kill -s SIGTERM `pidof ${apps[*]}`; echo "Closing ${apps[*]}"
 
 # ===================
 # Date and time
