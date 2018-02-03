@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # ====================
-# copy the script to the home dir, autostart (with 'watch -n 3' (update every 3 seconds)) in the background (with '&') and send the output to disappear inside 'null' (with '> /dev/null &') 
+# copy the script to the home dir, start (with 'watch -n 3' (update every 3 seconds)) in the background (with '&') and send the output to disappear inside 'null' (with '> /dev/null &') 
 # 'watch -n 3 ./nightLight.sh &> /dev/null &'
 
-# keep track of it with 'jobs'
+# keep track of it with 'top -p `pidof watch`'
 
-# stop it with 'kill %Job ID'
+# stop it with 'kill ID'
 # ====================
 
 # check if any of the specified applications are currently running
