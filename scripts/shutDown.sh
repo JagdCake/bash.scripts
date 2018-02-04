@@ -4,11 +4,12 @@
 # ===================
 
 # array of applications to close
-apps=(tixati chrome steam) 
+apps=(transmission-gtk chrome steam) 
+appnames=(Transmission, Google Chrome, Steam)
 
 # using SIGTERM to allow programs to exit cleanly
 # the wildcard (*) selects all array items
-kill -s SIGTERM `pidof ${apps[*]}`; echo "Closing ${apps[*]}"
+kill -s SIGTERM `pidof ${apps[*]}`; echo "Closing ${appnames[*]}"
 
 # ===================
 # Date and time
@@ -46,14 +47,24 @@ elif [ $cm -ge 10 ]; then
 fi
 
 # ===================
+# Prompt
+# ===================
+
+read -p "Enter '0' for shutdown or '1' for reboot: " key
+
+# ===================
 # Logs
 # ===================
 
 # startup time and date 
 echo "System powered on at: $starttime on `echo $startdate | awk -F - '{print $3}'` ${months[$sm]} `echo $startdate | awk -F - '{print $1}'`" >> /home/jagdcake/Desktop/shutdown.txt;
 
+if [ $key -eq 0 ]; then
 # current time + 30 seconds (hh:mm:ss) and the date 
-echo "System shutdown at: `date +%H:%M:%S -d "+30 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> /home/jagdcake/Desktop/shutdown.txt; 
+	echo "System shutdown at: `date +%H:%M:%S -d "+30 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> /home/jagdcake/Desktop/shutdown.txt; 
+elif [ $key -eq 1 ]; then
+	echo "System rebooted at: `date +%H:%M:%S -d "+30 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> /home/jagdcake/Desktop/shutdown.txt;
+fi
 
 # system uptime
 # using -e so echo recognizes escape characters
@@ -63,5 +74,10 @@ echo -e "The system has been `uptime -p`\n" >> /home/jagdcake/Desktop/shutdown.t
 # System shutdown
 # ===================
 
+if [ $key -eq 0 ]; then
 # turn system off after 30 seconds
-sleep 30s; shutdown -P now
+	sleep 30s; shutdown -P now
+elif [ $key -eq 1 ]; then
+# reboot system after 30 seconds
+	sleep 30s; shutdown -r now
+fi
