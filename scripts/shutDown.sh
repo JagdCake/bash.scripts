@@ -50,7 +50,15 @@ fi
 # Prompt
 # ===================
 
-read -p "Enter '0' for shutdown or '1' for reboot: " key
+prmt () {
+	read -p "Enter '0' for shutdown or '1' for reboot: " key
+}
+
+# accept the input only if the user enters '0' or '1'
+while [[ ! $key =~ [0-1]{1}$ ]]; do	
+	echo "Enter '0' or '1'!"
+	prmt
+done
 
 # ===================
 # Logs
@@ -64,10 +72,6 @@ if [ $key -eq 0 ]; then
 	echo "System shutdown at: `date +%H:%M:%S -d "+30 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> ~/Desktop/shutdown.txt; 
 elif [ $key -eq 1 ]; then
 	echo "System rebooted at: `date +%H:%M:%S -d "+30 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> ~/Desktop/shutdown.txt;
-else
-# run the script again if the input is wrong
-	echo "Try again!"
-	./shutDown.sh
 fi
 
 # system uptime
