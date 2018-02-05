@@ -2,8 +2,9 @@
 
 <ul>
   <li>Close all applications specified inside an array</li>
+  <li>Choose between shutdown and reboot</li>
   <li>Log system startup time and date</li>
-  <li>Log system shutdown time and date</li>
+  <li>Log system shutdown / reboot time and date</li>
   <li>Log system uptime</li>
   <li>Turn system off after 30 seconds</li>
 </ul>
@@ -20,7 +21,7 @@
 <h1>nightLight.sh</h1>
 
 <ul>
-  <li>Check if any of the specified (in an array) applications are running</li>
-  <li>Turn off gnome-night-light when you start one of the apps</li>
-  <li>Turn it back on if the app stops running</li>
+  <li>Check if any one of the specified applications is running</li>
+  <li>If an app is running turn off gnome-night-light</li>
+  <li>Turn it back on when you close the app</li>
 </ul>
