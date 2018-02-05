@@ -57,18 +57,22 @@ read -p "Enter '0' for shutdown or '1' for reboot: " key
 # ===================
 
 # startup time and date 
-echo "System powered on at: $starttime on `echo $startdate | awk -F - '{print $3}'` ${months[$sm]} `echo $startdate | awk -F - '{print $1}'`" >> /home/jagdcake/Desktop/shutdown.txt;
+echo "System powered on at: $starttime on `echo $startdate | awk -F - '{print $3}'` ${months[$sm]} `echo $startdate | awk -F - '{print $1}'`" >> ~/Desktop/shutdown.txt;
 
 if [ $key -eq 0 ]; then
 # current time + 30 seconds (hh:mm:ss) and the date 
-	echo "System shutdown at: `date +%H:%M:%S -d "+30 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> /home/jagdcake/Desktop/shutdown.txt; 
+	echo "System shutdown at: `date +%H:%M:%S -d "+30 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> ~/Desktop/shutdown.txt; 
 elif [ $key -eq 1 ]; then
-	echo "System rebooted at: `date +%H:%M:%S -d "+30 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> /home/jagdcake/Desktop/shutdown.txt;
+	echo "System rebooted at: `date +%H:%M:%S -d "+30 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> ~/Desktop/shutdown.txt;
+else
+# run the script again if the input is wrong
+	echo "Try again!"
+	./shutDown.sh
 fi
 
 # system uptime
 # using -e so echo recognizes escape characters
-echo -e "The system has been `uptime -p`\n" >> /home/jagdcake/Desktop/shutdown.txt
+echo -e "The system has been `uptime -p`\n" >> ~/Desktop/shutdown.txt
 
 # ===================
 # System shutdown
