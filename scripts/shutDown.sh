@@ -54,9 +54,11 @@ prmt () {
 	read -p "Enter '0' for shutdown or '1' for reboot: " key
 }
 
+prmt
+
 # accept the input only if the user enters '0' or '1'
 while [[ ! $key =~ [0-1]{1}$ ]]; do	
-	echo "Enter '0' or '1'!"
+	echo "Try again!"
 	prmt
 done
 
