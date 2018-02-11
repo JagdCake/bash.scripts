@@ -1,4 +1,21 @@
 #!/bin/bash
+
+# ===================
+# Prompt
+# ===================
+
+prmt () {
+	read -p "Enter '0' for shutdown or '1' for reboot: " key
+}
+
+prmt
+
+# accept the input only if the user enters '0' or '1'
+while [[ ! $key =~ [0-1]{1}$ ]]; do	
+	echo "Try again!"
+	prmt
+done
+
 # ===================
 # Closing applications
 # ===================
@@ -47,22 +64,6 @@ elif [ $cm -ge 10 ]; then
 fi
 
 # ===================
-# Prompt
-# ===================
-
-prmt () {
-	read -p "Enter '0' for shutdown or '1' for reboot: " key
-}
-
-prmt
-
-# accept the input only if the user enters '0' or '1'
-while [[ ! $key =~ [0-1]{1}$ ]]; do	
-	echo "Try again!"
-	prmt
-done
-
-# ===================
 # Logs
 # ===================
 
@@ -70,10 +71,10 @@ done
 echo "System powered on at: $starttime on `echo $startdate | awk -F - '{print $3}'` ${months[$sm]} `echo $startdate | awk -F - '{print $1}'`" >> ~/Desktop/shutdown.txt;
 
 if [ $key -eq 0 ]; then
-# current time + 30 seconds (hh:mm:ss) and the date 
-	echo "System shutdown at: `date +%H:%M:%S -d "+30 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> ~/Desktop/shutdown.txt; 
+# current time + 20 sec / 5 sec (hh:mm:ss) and the date 
+	echo "System shutdown at: `date +%H:%M:%S -d "+20 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> ~/Desktop/shutdown.txt; 
 elif [ $key -eq 1 ]; then
-	echo "System rebooted at: `date +%H:%M:%S -d "+30 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> ~/Desktop/shutdown.txt;
+	echo "System rebooted at: `date +%H:%M:%S -d "+5 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> ~/Desktop/shutdown.txt;
 fi
 
 # system uptime
@@ -85,9 +86,9 @@ echo -e "The system has been `uptime -p`\n" >> ~/Desktop/shutdown.txt
 # ===================
 
 if [ $key -eq 0 ]; then
-# turn system off after 30 seconds
-	sleep 30s; shutdown -P now
+# turn system off after 20 seconds
+	sleep 20s; shutdown -P now
 elif [ $key -eq 1 ]; then
-# reboot system after 30 seconds
-	sleep 30s; shutdown -r now
+# reboot system after 5 seconds
+	sleep 5s; shutdown -r now
 fi
