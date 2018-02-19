@@ -22,45 +22,45 @@ done
 
 # array of applications to close
 apps=(transmission-gtk chrome steam) 
-appnames=(Transmission, Google Chrome, Steam)
+appNames=(Transmission, Google Chrome, Steam)
 
 # using SIGTERM to allow programs to exit cleanly
 # the wildcard (*) selects all array items
-kill -s SIGTERM `pidof ${apps[*]}`; echo "Closing ${appnames[*]}"
+kill -s SIGTERM `pidof ${apps[*]}`; echo "Closing ${appNames[*]}"
 
 # ===================
 # Date and time
 # ===================
 
 # split the start time and date into two variables
-starttime="`uptime -s | awk '{print $2}'`"
-startdate="`uptime -s | awk '{print $1}'`"
+startTime="`uptime -s | awk '{print $2}'`"
+startDate="`uptime -s | awk '{print $1}'`"
 
 # makes 'Jan' the item at index 1 of the array
 months=(Null Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
 
 # get the start month's number in format "##", e.g. 02 = February
-sm="`echo $startdate | awk -F - '{print $2}'`"
+sM="`echo $startDate | awk -F - '{print $2}'`"
 
 # get the current month's number  
-cm=`date +%m`
+cM=`date +%m`
 
 # ===================
 # Conditions
 # ===================
 
 # removes the 0 from month numbers below 10 so they correspond to that month's index in the array, e.g. 02 becomes 2 which is the index of Feb
-if [ $sm -lt 10 ]; then
-	smonth="`echo $sm | awk -F 0 '{print $2}'`"
-elif [ $sm -ge 10 ]; then
-	smonth="`echo $sm`"
+if [ $sM -lt 10 ]; then
+	sMonth="`echo $sM | awk -F 0 '{print $2}'`"
+elif [ $sM -ge 10 ]; then
+	sMonth="`echo $sM`"
 fi
 
 # double quotes evaluate any command between them (IF the command is between backticks)
-if [ $cm -lt 10 ]; then
-	cmonth="`echo $cm | awk -F 0 '{print $2}'`"
-elif [ $cm -ge 10 ]; then
-	cmonth="`echo $cm`"
+if [ $cM -lt 10 ]; then
+	cMonth="`echo $cM | awk -F 0 '{print $2}'`"
+elif [ $cM -ge 10 ]; then
+	cMonth="`echo $cM`"
 fi
 
 # ===================
@@ -68,13 +68,13 @@ fi
 # ===================
 
 # startup time and date 
-echo "System powered on at: $starttime on `echo $startdate | awk -F - '{print $3}'` ${months[$sm]} `echo $startdate | awk -F - '{print $1}'`" >> ~/Desktop/shutdown.txt;
+echo "System powered on at: $startTime on `echo $startDate | awk -F - '{print $3}'` ${months[$sM]} `echo $startDate | awk -F - '{print $1}'`" >> ~/Desktop/shutdown.txt;
 
 if [ $key -eq 0 ]; then
 # current time + 20 sec / 5 sec (hh:mm:ss) and the date 
-	echo "System shutdown at: `date +%H:%M:%S -d "+20 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> ~/Desktop/shutdown.txt; 
+	echo "System shutdown at: `date +%H:%M:%S -d "+20 sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> ~/Desktop/shutdown.txt; 
 elif [ $key -eq 1 ]; then
-	echo "System rebooted at: `date +%H:%M:%S -d "+5 sec"` on `date +%d` ${months[$cmonth]} `date +%Y`" >> ~/Desktop/shutdown.txt;
+	echo "System rebooted at: `date +%H:%M:%S -d "+5 sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> ~/Desktop/shutdown.txt;
 fi
 
 # system uptime
