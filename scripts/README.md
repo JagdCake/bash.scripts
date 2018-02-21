@@ -25,3 +25,13 @@
   <li>If an app is running turn off gnome-night-light</li>
   <li>Turn it back on when you close the app</li>
 </ul>
+
+<hr>
+
+<h1>weightTracker.sh</h1>
+
+<ul>
+  <li>Enter your weight (in kilograms) every monday morning</li>
+  <li>Log the current workout week's number</li>
+  <li>Convert the weight from kg to pounds and log both values</li>
+</ul>
