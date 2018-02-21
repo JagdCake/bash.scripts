@@ -67,19 +67,21 @@ fi
 # Logs
 # ===================
 
+log=~/Desktop/shutdown.txt
+
 # startup time and date 
-echo "System powered on at: $startTime on `echo $startDate | awk -F - '{print $3}'` ${months[$sM]} `echo $startDate | awk -F - '{print $1}'`" >> ~/Desktop/shutdown.txt;
+echo "System powered on at: $startTime on `echo $startDate | awk -F - '{print $3}'` ${months[$sM]} `echo $startDate | awk -F - '{print $1}'`" >> $log
 
 if [ $key -eq 0 ]; then
 # current time + 20 sec / 5 sec (hh:mm:ss) and the date 
-	echo "System shutdown at: `date +%H:%M:%S -d "+20 sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> ~/Desktop/shutdown.txt; 
+	echo "System shutdown at: `date +%H:%M:%S -d "+20 sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> $log 
 elif [ $key -eq 1 ]; then
-	echo "System rebooted at: `date +%H:%M:%S -d "+5 sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> ~/Desktop/shutdown.txt;
+	echo "System rebooted at: `date +%H:%M:%S -d "+5 sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> $log
 fi
 
 # system uptime
 # using -e so echo recognizes escape characters
-echo -e "The system has been `uptime -p`\n" >> ~/Desktop/shutdown.txt
+echo -e "The system has been `uptime -p`\n" >> $log
 
 # ===================
 # System shutdown
