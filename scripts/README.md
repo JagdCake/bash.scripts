@@ -21,9 +21,9 @@
 <h1>nightLight.sh</h1>
 
 <ul>
-  <li>Check if any one of the specified applications is running</li>
-  <li>If an app is running turn off gnome-night-light</li>
-  <li>Turn it back on when you close the app</li>
+  <li>Check if the foreground app is in fullscreen mode</li>
+  <li>If it is, turn off gnome-night-light</li>
+  <li>Turn it back on when you close the application</li>
 </ul>
 
 <hr>
