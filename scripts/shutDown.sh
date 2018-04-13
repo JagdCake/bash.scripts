@@ -22,11 +22,11 @@ done
 
 # array of applications to close
 apps=(transmission-gtk chrome steam) 
-appNames=(Transmission, Google Chrome, Steam)
+appNames=(Transmission, "Google Chrome", Steam)
 
 # using SIGTERM to allow programs to exit cleanly
-# the wildcard (*) selects all array items
-kill -s SIGTERM `pidof ${apps[*]}`; echo "Closing ${appNames[*]}"
+# "@" calls the array items as separate strings
+kill -s SIGTERM `pidof "${apps[@]}"` && echo "Closing "${appNames[@]}""
 
 # ===================
 # Date and time
