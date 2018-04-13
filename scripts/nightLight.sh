@@ -2,22 +2,25 @@
 
 # ====================
 # copy the script to the home dir, start (with 'watch -n 3' (update every 3 seconds)) in the background (with '&') and send the output to disappear inside 'null' (with '> /dev/null &') 
-# 'watch -n 3 ./nightLight.sh &> /dev/null &'
+# "watch -n 3 ./nightLight.sh &> /dev/null &"
 
-# keep track of it with 'top -p `pidof watch`'
+# keep track of it with "jobs" (have to be in the same shell) or 'top -p `pidof watch`'
 
-# stop it with 'kill ID'
+# stop it by closing the shell
 # ====================
 
-# check if any of the specified applications are currently running
-if [[ $(pgrep hl2_linux) || $(pgrep mpv) || $(pgrep CompanyOfHeroes2) ]]; then
-	check=1
-else
-	check=0
-fi
+# set your screen resolution
+res_width=1920
+res_height=1080
 
-# if any one of the apps is running turn night-light off and vice versa
-if [ "$check" -eq 1 ]; then
+# get the id of the active window
+active_window="`xprop -root _NET_ACTIVE_WINDOW | awk -F'#' '{print $2}'`"
+
+width=`xwininfo -id ${active_window} | awk -F'Width:' '{print $2}' | tr -d '[:space:]'`
+height=`xwininfo -id ${active_window} | awk -F'Height:' '{print $2}' | tr -d '[:space:]'`
+name=`xwininfo -id ${active_window} | awk -F'"' '{print $2}' | tr -d '[:space:]'`
+
+if [ $name != 'Desktop' -a $width -eq $res_width -a $height -eq $res_height ]; then
 	gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled false
 else
 	gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
