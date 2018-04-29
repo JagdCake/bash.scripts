@@ -1,4 +1,5 @@
 scripts/dirBackup.sh
 scripts/fileBackup.sh
 scripts/docsSearch.sh
+scripts/recipes.sh
 TODO
