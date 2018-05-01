@@ -2,4 +2,5 @@ scripts/dirBackup.sh
 scripts/fileBackup.sh
 scripts/docsSearch.sh
 scripts/recipes.sh
+scripts/timeTracker.sh
 TODO
