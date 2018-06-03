@@ -94,3 +94,4 @@ elif [ $key -eq 1 ]; then
 # reboot system after 5 seconds
 	sleep 5s; shutdown -r now
 fi
+

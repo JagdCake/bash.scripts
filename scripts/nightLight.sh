@@ -25,3 +25,4 @@ if [ $name != 'Desktop' -a $width -eq $res_width -a $height -eq $res_height ]; t
 else
 	gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 fi
+
