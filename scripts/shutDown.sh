@@ -21,8 +21,8 @@ done
 # ===================
 
 # array of applications to close
-apps=(transmission-gtk chrome steam) 
-appNames=(Transmission, "Google Chrome", Steam)
+apps=(transmission-gtk firefox steam) 
+appNames=(Transmisseon, Firefox, Steam)
 
 # using SIGTERM to allow programs to exit cleanly
 # "@" calls the array items as separate strings
