@@ -36,3 +36,11 @@
   <li>Log the current date</li>
   <li>Convert the weight from kg to pounds and log both values</li>
 </ul>
+
+<h1>check_websites.sh</h1>
+
+<ul>
+  <li>Loop through an array of websites</li>
+  <li>Print '[website] ONLINE / OFFLINE' for each one, depending on the response status code</li>
+</ul>
+
