@@ -1,4 +1,4 @@
-<h1>shutDown.sh</h1>
+<h1>shut_down.sh</h1>
 
 <ul>
   <li>Close all applications specified inside an array</li>
@@ -18,7 +18,7 @@
 
 <hr>
 
-<h1>nightLight.sh</h1>
+<h1>night_light.sh</h1>
 
 <ul>
   <li>Check if the foreground app is in fullscreen mode</li>
@@ -28,7 +28,7 @@
 
 <hr>
 
-<h1>weightTracker.sh</h1>
+<h1>weight_tracker.sh</h1>
 
 <ul>
   <li>Enter your weight (in kilograms) every monday morning</li>
