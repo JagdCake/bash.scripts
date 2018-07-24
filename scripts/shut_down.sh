@@ -14,8 +14,14 @@ close_apps() {
 }
 
 # ===================
-# Closing applications
+# Write to log
 # ===================
+log=~/Desktop/shutdown.txt
+
+# if the log file doesn't exist, create it
+if [ -e "$log" ]; then
+    touch "$log"
+fi
 
 # array of applications to close
 apps=(transmission-gtk firefox steam) 
