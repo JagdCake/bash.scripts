@@ -20,6 +20,7 @@
 <hr>
 
 <h1>night_light.sh</h1>
+<p>Dependencies: GNOME Night Light, xprop, xwininfo</p>
 
 <ul>
   <li>Check if the foreground app is in fullscreen mode</li>
