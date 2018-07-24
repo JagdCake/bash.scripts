@@ -26,6 +26,7 @@ timer() {
 
     if [ $checkmarks -ne 4 ]; then
         echo '✓'
+        echo 'Take a 5 minute break'
         sleep 5m
         spd-say -t female1 'start'
         echo -e '\nStart'
