@@ -1,12 +1,10 @@
 #!/bin/bash
 
 #===================
+# symlink from inside home dir (ln -s path/to/shellScripts/scripts/weight_tracker.sh)
 
-# symlink from inside home dir (ln -s Documents/shellScripts/scripts/weightTracker.sh)
-
-# start only on mondays in the morning with dcron (./weightTracker.sh)
-
-# can't get dcron / systemd timers to work on Solus, start manually
+# use only on Mondays in the morning
+#===================
 
 # Format
 # Week: #
