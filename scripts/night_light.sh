@@ -2,11 +2,11 @@
 
 # ====================
 # copy the script to the home dir, start (with 'watch -n 3' (update every 3 seconds)) in the background (with '&') and send the output to disappear inside 'null' (with '> /dev/null &') 
-# "watch -n 3 ./nightLight.sh &> /dev/null &"
+# "watch -n 3 ./night_light.sh &> /dev/null &"
 
-# keep track of it with "jobs" (have to be in the same shell) or 'top -p `pidof watch`'
+# keep track of it with "jobs" (have to be in the same shell)
 
-# stop it by closing the shell
+# stop it by closing the shell / killing it with "kill %[jobs ID]"
 # ====================
 
 # set your screen resolution
