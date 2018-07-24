@@ -47,7 +47,6 @@ shutdown_or_reboot() {
 # ===================
 # Date and time
 # ===================
-
 # split the start time and date into two variables
 startTime="`uptime -s | awk '{print $2}'`"
 startDate="`uptime -s | awk '{print $1}'`"
@@ -60,10 +59,6 @@ sM="`echo $startDate | awk -F - '{print $2}'`"
 
 # get the current month's number  
 cM=`date +%m`
-
-# ===================
-# Conditions
-# ===================
 
 # removes the 0 from month numbers below 10 so they correspond to that month's index in the array, e.g. 02 becomes 2 which is the index of Feb
 if [ $sM -lt 10 ]; then
