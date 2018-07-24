@@ -75,34 +75,22 @@ elif [ $cM -ge 10 ]; then
 fi
 
 # ===================
-# Logs
+# Select
 # ===================
-
-log=~/Desktop/shutdown.txt
-
-# startup time and date 
-echo "System powered on at: $startTime on `echo $startDate | awk -F - '{print $3}'` ${months[$sM]} `echo $startDate | awk -F - '{print $1}'`" >> $log
-
-if [ $key -eq 0 ]; then
-# current time + 20 sec / 5 sec (hh:mm:ss) and the date 
-	echo "System shutdown at: `date +%H:%M:%S -d "+20 sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> $log 
-elif [ $key -eq 1 ]; then
-	echo "System rebooted at: `date +%H:%M:%S -d "+5 sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> $log
-fi
-
-# system uptime
-# using -e so echo recognizes escape characters
-echo -e "The system has been `uptime -p`\n" >> $log
-
-# ===================
-# System shutdown
-# ===================
-
-if [ $key -eq 0 ]; then
-# turn system off after 20 seconds
-	sleep 20s; shutdown -P now
-elif [ $key -eq 1 ]; then
-# reboot system after 5 seconds
-	sleep 5s; shutdown -r now
-fi
+select thing_to_do in "Shutdown" "Reboot" "Cancel"; do
+    case $thing_to_do in
+        Shutdown )
+            shutdown_or_reboot shutdown
+            # turn system off after 10 seconds
+            sleep ${time_to_shutdown}s; shutdown -P now
+            exit;; 
+        Reboot )
+            shutdown_or_reboot reboot
+            # reboot system after 5 seconds
+            sleep ${time_to_reboot}s; shutdown -r now
+            exit;; 
+        Cancel ) 
+            exit;;
+    esac
+done
 
