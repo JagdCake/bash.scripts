@@ -3,4 +3,5 @@ scripts/fileBackup.sh
 scripts/docsSearch.sh
 scripts/recipes.sh
 scripts/timeTracker.sh
+scripts/playground.sh
 TODO
