@@ -1,20 +1,17 @@
 #!/bin/bash
 
 # ===================
-# Prompt
+# Close applications
 # ===================
+close_apps() {
+    # array of applications to close
+    apps=(transmission-gtk firefox steam) 
+    app_names=(Transmission, Firefox, Steam)
 
-prmt () {
-	read -p "Enter '0' for shutdown or '1' for reboot: " key
+    # using SIGTERM to allow programs to exit cleanly
+    # "@" calls the array items as separate strings
+    kill -s SIGTERM `pidof "${apps[@]}"` && echo "Closing "${app_names[@]}""
 }
-
-prmt
-
-# accept the input only if the user enters '0' or '1'
-while [[ ! $key =~ [0-1]{1}$ ]]; do	
-	echo "Try again!"
-	prmt
-done
 
 # ===================
 # Closing applications
