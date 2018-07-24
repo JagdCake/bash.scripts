@@ -23,13 +23,26 @@ if [ -e "$log" ]; then
     touch "$log"
 fi
 
-# array of applications to close
-apps=(transmission-gtk firefox steam) 
-appNames=(Transmission, Firefox, Steam)
+shutdown_or_reboot() {
+    time_to_shutdown=10
+    time_to_reboot=5
 
-# using SIGTERM to allow programs to exit cleanly
-# "@" calls the array items as separate strings
-kill -s SIGTERM `pidof "${apps[@]}"` && echo "Closing "${appNames[@]}""
+    close_apps
+
+    # startup time and date 
+    echo "System powered on at: $startTime on `echo $startDate | awk -F - '{print $3}'` ${months[$sM]} `echo $startDate | awk -F - '{print $1}'`" >> "$log"
+
+    if [ $1 == 'shutdown' ]; then
+    # current time + 10 sec / 5 sec (hh:mm:ss) and the date 
+        echo "System shutdown at: `date +%H:%M:%S -d "+$time_to_shutdown sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> "$log" 
+    elif [ $1 == 'reboot' ]; then
+        echo "System rebooted at: `date +%H:%M:%S -d "+$time_to_reboot sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> "$log"
+    fi
+
+    # system uptime
+    # using -e so echo can recognize escape characters
+    echo -e "The system has been `uptime -p`\n" >> "$log"
+}
 
 # ===================
 # Date and time
