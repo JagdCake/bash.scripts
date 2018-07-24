@@ -21,12 +21,14 @@ timer() {
     done
 
     spd-say -t female1 'stop'
+    echo -e '\nStop'
     checkmarks=$(($checkmarks+1))
 
     if [ $checkmarks -ne 4 ]; then
         echo '✓'
         sleep 5m
         spd-say -t female1 'start'
+        echo -e '\nStart'
         timer
     else
         echo '✓'
@@ -34,6 +36,7 @@ timer() {
         sleep 20m
         checkmarks=0
         spd-say -t female1 'start'
+        echo -e '\nStart'
         timer
     fi
 }
