@@ -6,16 +6,13 @@
 # use only on Mondays in the morning
 #===================
 
-# Format
+# log file location
+log=~/Desktop/weight.txt
+# Log format
 # Week: #
 # Date: ## Month ####
 # Weight: ##.# kg / ##.# lb
 # \n (newline)
-
-#===================
-
-# file location
-log=~/Desktop/weight.txt
 
 # get last week's number (it has to already be in the log file before you run the script for the first time)
 lastWeek=`tail -n 4 ~/Desktop/weight.txt | head -n 1 | awk '{printf $2}'`
