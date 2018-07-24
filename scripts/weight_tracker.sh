@@ -15,9 +15,9 @@ log=~/Desktop/weight.txt
 # \n (newline)
 
 # get last week's number (it has to already be in the log file before you run the script for the first time)
-lastWeek=`tail -n 4 ~/Desktop/weight.txt | head -n 1 | awk '{printf $2}'`
+last_week=$(tail -n 4 "$log" | head -n 1 | awk '{printf $2}')
 
-week=$(($lastWeek+1))
+week=$(($last_week+1))
 
 # e.g. 21 Feb 2018
 date=`date "+%d %b %Y"`
