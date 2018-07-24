@@ -31,6 +31,7 @@
 <hr>
 
 <h1>weight_tracker.sh</h1>
+<p>Dependencies: None</p>
 
 <ul>
   <li>Enter your weight (in kilograms) every monday morning</li>
