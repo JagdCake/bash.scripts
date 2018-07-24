@@ -41,6 +41,7 @@
 </ul>
 
 <h1>check_websites.sh</h1>
+<p>Dependencies: None</p>
 
 <ul>
   <li>Loop through an array of websites</li>
