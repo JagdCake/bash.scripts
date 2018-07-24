@@ -1,12 +1,13 @@
 <h1>shut_down.sh</h1>
+<p>Dependencies: None</p>
 
 <ul>
+  <li>Choose between shutdown, reboot and cancel</li>
   <li>Close all applications specified inside an array</li>
-  <li>Choose between shutdown and reboot</li>
   <li>Log system startup time and date</li>
   <li>Log system shutdown / reboot time and date</li>
   <li>Log system uptime</li>
-  <li>Turn system off after 30 seconds</li>
+  <li>Power system off OR reboot after a specified amount of time</li>
 </ul>
 
 <h2>Example log output</h2>
