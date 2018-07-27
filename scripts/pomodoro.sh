@@ -8,6 +8,9 @@
 pomodoro_time=25
 small_break=5
 big_break=20
+
+icons=(🍅 ✓ ✔ ✅ ✗ ✘)
+checkmark_icon=${icons[0]}
 ### ###
 
 # Source: https://stackoverflow.com/questions/38868665/multiplying-strings-in-bash-script/38868864#38868864 
@@ -37,14 +40,14 @@ timer() {
     checkmarks=$(($checkmarks+1))
 
     if [ $checkmarks -ne 4 ]; then
-		multiply_string '✓' $checkmarks
+		multiply_string "$checkmark_icon" $checkmarks
         echo "Take a ${small_break} minute break."
         sleep ${small_break}m
         spd-say -t female2 'Start!'
         echo -e '\nStart!'
         timer
     else
-		multiply_string '✓' $checkmarks
+		multiply_string "$checkmark_icon" $checkmarks
         echo "Take a ${big_break} minute break."
         sleep ${big_break}m
         checkmarks=0
