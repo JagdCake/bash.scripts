@@ -12,6 +12,8 @@ big_break=20
 icons=(🍅 ✓ ✔ ✅ ✗ ✘)
 checkmark_icon=${icons[0]}
 
+voice_options=(male1 male2 male3 female1 female2 female3 child_male child_female)
+voice_type=${voice_options[4]}
 start_message='Start!'
 stop_message='Stop!'
 ### ###
@@ -37,7 +39,7 @@ timer() {
         current=$(date +%M)
     done
 
-    spd-say -t female2 "$stop_message"
+    spd-say -t $voice_type "$stop_message"
 
     echo -e "\n${stop_message}"
     checkmarks=$(($checkmarks+1))
@@ -46,7 +48,7 @@ timer() {
 		multiply_string "$checkmark_icon" $checkmarks
         echo "Take a ${small_break} minute break."
         sleep ${small_break}m
-        spd-say -t female2 "$start_message"
+        spd-say -t $voice_type "$start_message"
         echo -e "\n${start_message}"
         timer
     else
@@ -54,7 +56,7 @@ timer() {
         echo "Take a ${big_break} minute break."
         sleep ${big_break}m
         checkmarks=0
-        spd-say -t female2 "$start_message"
+        spd-say -t $voice_type "$start_message"
         echo -e "\n${start_message}"
         timer
     fi
