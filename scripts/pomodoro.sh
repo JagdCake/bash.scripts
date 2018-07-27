@@ -10,6 +10,15 @@ big_break=20
 
 checkmarks=0
 
+# Source: https://stackoverflow.com/questions/38868665/multiplying-strings-in-bash-script/38868864#38868864 
+multiply_string() {
+    string="$1"
+    count="$2"
+
+    multiply="$(printf "%${count}s")"
+    echo "${multiply// /$string}"
+}
+
 timer() {
     target=$(date +%M -d "+${pomodoro_time} minutes")
     current=$(date +%M)
@@ -28,14 +37,14 @@ timer() {
     checkmarks=$(($checkmarks+1))
 
     if [ $checkmarks -ne 4 ]; then
-        echo '✓'
+		multiply_string '✓' $checkmarks
         echo "Take a ${small_break} minute break."
         sleep ${small_break}m
         spd-say -t female1 'Start!'
         echo -e '\nStart!'
         timer
     else
-        echo '✓'
+		multiply_string '✓' $checkmarks
         echo "Take a ${big_break} minute break."
         sleep ${big_break}m
         checkmarks=0
