@@ -52,12 +52,12 @@
 <p>Dependencies: speech-dispatcher</p>
 
 <ul>
-  <li>Start a 25 minute timer</li>
-  <li>Print 'x minutes have passed' every 5 minutes</li>
-  <li>Produce an audible 'stop' after 25 minutes and print a checkmark</li>
-  <li>Allow a 5 minute break</li>
+  <li>Start an x minute timer</li>
+  <li>Print 'x minutes have passed' every x minutes</li>
+  <li>Produce an audible 'stop' after x minutes and print a checkmark</li>
+  <li>Allow an x minute break</li>
   <li>Produce an audible 'start' after the break and restart the timer</li>
-  <li>Repeat from the start until the fourth checkmark and then allow a 20 minute break</li>
+  <li>Repeat from the start until the fourth checkmark and then allow an x minute break</li>
   <li>Repeat from the start</li>
 </ul>
 
