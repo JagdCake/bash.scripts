@@ -5,6 +5,8 @@
 # if spd-say sound is crackling, open '/usr/share/defaults/speech-dispatcher/speechd.conf' and change 'AudioOutputMethod' to 'libao'
 
 pomodoro_time=25
+small_break=5
+big_break=20
 
 checkmarks=0
 
@@ -14,9 +16,9 @@ timer() {
     passed=0
 
     while [ $target -ne $current ]; do
-        sleep 5m
-        echo "$(echo $passed + 5 | bc -l ) minutes have passed"
-        passed=$(($passed+5))
+        sleep ${small_break}m
+        echo "$(echo $passed + $small_break | bc -l ) minutes have passed."
+        passed=$(($passed+$small_break))
         current=$(date +%M)
     done
 
@@ -26,15 +28,15 @@ timer() {
 
     if [ $checkmarks -ne 4 ]; then
         echo '✓'
-        echo 'Take a 5 minute break'
-        sleep 5m
         spd-say -t female1 'start'
         echo -e '\nStart'
+        echo "Take a ${small_break} minute break."
+        sleep ${small_break}m
         timer
     else
         echo '✓'
-        echo 'Take a 20 minute break'
-        sleep 20m
+        echo "Take a ${big_break} minute break."
+        sleep ${big_break}m
         checkmarks=0
         spd-say -t female1 'start'
         echo -e '\nStart'
