@@ -11,6 +11,9 @@ big_break=20
 
 icons=(🍅 ✓ ✔ ✅ ✗ ✘)
 checkmark_icon=${icons[0]}
+
+start_message='Start!'
+stop_message='Stop!'
 ### ###
 
 # Source: https://stackoverflow.com/questions/38868665/multiplying-strings-in-bash-script/38868864#38868864 
@@ -34,30 +37,30 @@ timer() {
         current=$(date +%M)
     done
 
-    spd-say -t female2 'Stop!'
+    spd-say -t female2 "$stop_message"
 
-    echo -e '\nStop!'
+    echo -e "\n${stop_message}"
     checkmarks=$(($checkmarks+1))
 
     if [ $checkmarks -ne 4 ]; then
 		multiply_string "$checkmark_icon" $checkmarks
         echo "Take a ${small_break} minute break."
         sleep ${small_break}m
-        spd-say -t female2 'Start!'
-        echo -e '\nStart!'
+        spd-say -t female2 "$start_message"
+        echo -e "\n${start_message}"
         timer
     else
 		multiply_string "$checkmark_icon" $checkmarks
         echo "Take a ${big_break} minute break."
         sleep ${big_break}m
         checkmarks=0
-        spd-say -t female2 'Start!'
-        echo -e '\nStart!'
+        spd-say -t female2 "$start_message"
+        echo -e "\n${start_message}"
         timer
     fi
 }
 
-echo -e '\nStart!'
+echo -e "\n${start_message}"
 
 checkmarks=0
 timer
