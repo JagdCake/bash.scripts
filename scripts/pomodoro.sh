@@ -22,27 +22,29 @@ timer() {
         current=$(date +%M)
     done
 
-    spd-say -t female1 'stop'
-    echo -e '\nStop'
+    spd-say -t female1 'Stop!'
+
+    echo -e '\nStop!'
     checkmarks=$(($checkmarks+1))
 
     if [ $checkmarks -ne 4 ]; then
         echo '✓'
-        spd-say -t female1 'start'
-        echo -e '\nStart'
         echo "Take a ${small_break} minute break."
         sleep ${small_break}m
+        spd-say -t female1 'Start!'
+        echo -e '\nStart!'
         timer
     else
         echo '✓'
         echo "Take a ${big_break} minute break."
         sleep ${big_break}m
         checkmarks=0
-        spd-say -t female1 'start'
-        echo -e '\nStart'
+        spd-say -t female1 'Start!'
+        echo -e '\nStart!'
         timer
     fi
 }
 
+echo -e '\nStart!'
 timer
 
