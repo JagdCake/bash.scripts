@@ -31,7 +31,7 @@ timer() {
         current=$(date +%M)
     done
 
-    spd-say -t female1 'Stop!'
+    spd-say -t female2 'Stop!'
 
     echo -e '\nStop!'
     checkmarks=$(($checkmarks+1))
@@ -40,7 +40,7 @@ timer() {
 		multiply_string '✓' $checkmarks
         echo "Take a ${small_break} minute break."
         sleep ${small_break}m
-        spd-say -t female1 'Start!'
+        spd-say -t female2 'Start!'
         echo -e '\nStart!'
         timer
     else
@@ -48,7 +48,7 @@ timer() {
         echo "Take a ${big_break} minute break."
         sleep ${big_break}m
         checkmarks=0
-        spd-say -t female1 'Start!'
+        spd-say -t female2 'Start!'
         echo -e '\nStart!'
         timer
     fi
