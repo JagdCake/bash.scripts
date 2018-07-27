@@ -4,11 +4,11 @@
 
 # if spd-say sound is crackling, open '/usr/share/defaults/speech-dispatcher/speechd.conf' and change 'AudioOutputMethod' to 'libao'
 
+### options ###
 pomodoro_time=25
 small_break=5
 big_break=20
-
-checkmarks=0
+### ###
 
 # Source: https://stackoverflow.com/questions/38868665/multiplying-strings-in-bash-script/38868864#38868864 
 multiply_string() {
@@ -55,5 +55,7 @@ timer() {
 }
 
 echo -e '\nStart!'
+
+checkmarks=0
 timer
 
