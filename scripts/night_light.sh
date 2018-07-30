@@ -1,5 +1,11 @@
 #!/bin/bash
 
+### Description ###
+# Check if the foreground app is in fullscreen mode
+# If it is, turn off gnome-night-light
+# Turn it back on when you close the application
+### ###
+
 ### Usage ###
 # Create an alias for the script in '.bashrc' and run it from a terminal
     # alias togglenightl='watch -n [x] /path/to/./night_light.sh &> /dev/null &'
