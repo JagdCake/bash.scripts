@@ -1,6 +1,8 @@
 #!/bin/bash
 
+### Options ###
 websites=(https://modeling.jagdcake.com/ https://dreams.jagdcake.com/)
+### ###
 
 for i in ${websites[@]}
 do
