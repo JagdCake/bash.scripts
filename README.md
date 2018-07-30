@@ -1,4 +1,6 @@
-<h1 align="center">shellScripts</h1>
+<h1 align="center">Description</h1>
 
-<p>This is my first repo. I decided to try out Github while <a href="https://linuxjourney.com/">learning Linux</a>. Most of the scripts here are going to be very simplistic, e.g. closing applications, installing a bunch of packages (in <a href="https://solus-project.com/home/">Solus</a>), creating log files, etc.</p>
+<p>Most of the scripts here are very simplistic, e.g. for closing applications, a pomodoro timer, automated creation of log files, etc.</p>
+
+<p>I only use <a href="https://solus-project.com/">Solus</a>, so I can't guarantee that the scripts will run on any other distro.</p>
 
