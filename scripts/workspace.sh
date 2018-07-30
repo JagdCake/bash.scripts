@@ -21,6 +21,12 @@ workspace_commands() {
         terminator -l default
     fi
 }
+
+workspace_1_bg='/home/jagdcake/Pictures/pinecone_desktop.png'
+workspace_2_bg='/home/jagdcake/Pictures/blue_feathers.png'
+workspace_3_bg='/home/jagdcake/Pictures/david-marcu-2041.jpg'
+workspace_4_bg='/home/jagdcake/Pictures/rose_black.png'
+workspace_5_bg='/home/jagdcake/Pictures/cubes_gray.png'
 ### ###
 
 workspace_is_active() {
@@ -42,6 +48,20 @@ switch_to() {
     else
         xdotool set_desktop $workspace_number 
         workspace_commands $workspace_number 
+    fi
+}
+
+switch_background() {
+    if [ $workspace -eq 0 ]; then
+        gsettings set org.gnome.desktop.background picture-uri file://"$workspace_1_bg"
+    elif [ $workspace -eq 1 ]; then
+        gsettings set org.gnome.desktop.background picture-uri file://"$workspace_2_bg"
+    elif [ $workspace -eq 2 ]; then
+        gsettings set org.gnome.desktop.background picture-uri file://"$workspace_3_bg"
+    elif [ $workspace -eq 3 ]; then 
+        gsettings set org.gnome.desktop.background picture-uri file://"$workspace_4_bg"
+    elif [ $workspace -eq 4 ]; then
+        gsettings set org.gnome.desktop.background picture-uri file://"$workspace_5_bg"
     fi
 }
 
@@ -73,6 +93,8 @@ switch_workspace() {
                 exit;;
         esac
     done
+
+    switch_background
 }
 
 switch_workspace
