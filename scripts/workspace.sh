@@ -27,11 +27,14 @@ workspace_2_bg='/home/jagdcake/Pictures/blue_feathers.png'
 workspace_3_bg='/home/jagdcake/Pictures/david-marcu-2041.jpg'
 workspace_4_bg='/home/jagdcake/Pictures/rose_black.png'
 workspace_5_bg='/home/jagdcake/Pictures/cubes_gray.png'
+
+# xdotool will look for this app in the selected workspace to determine if the workspace is active, if it is, the script will only switch to it without running 'workspace_commands'
+app_to_search_for='terminator'
 ### ###
 
 workspace_is_active() {
     # Source: https://stackoverflow.com/a/27074039/8980616
-    xdotool search --onlyvisible --desktop $1 --class terminator getwindowname %@ > /dev/null
+    xdotool search --onlyvisible --desktop $1 --class "$app_to_search_for" getwindowname %@ > /dev/null
 
     if [ $? -eq 0 ]; then
         true
