@@ -1,10 +1,14 @@
 #!/bin/bash
 
-#===================
-# symlink from inside home dir (ln -s path/to/shellScripts/scripts/weight_tracker.sh)
-
-# use only on Mondays in the morning
-#===================
+### Usage ###
+# You can just create an alias for the script in '.bashrc' and run it from a terminal
+    # alias weighttracker='/path/to/./weight_tracker.sh'
+    # $ weighttracker
+# You can create a symbolic link to the script from your home directory
+    # ~$ ln -s /path/to/weight_tracker.sh
+    # ~$ ./weight_tracker.sh
+# usable only for weekly weight tracking
+### ###
 
 # log file location
 log=~/Desktop/weight.txt
