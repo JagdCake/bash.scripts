@@ -6,6 +6,32 @@
 # Change the background depending on the workspace
 ### ###
 
+### Usage ###
+# You can just create an alias for the script in '.bashrc' and run it from a terminal
+    # alias workspace='/path/to/./workspace.sh'
+    # $ workspace
+# or a function to optionally skip the menu
+    # workspace() {
+    #   if [ -z $1 ]; then
+    #       /path/to/./workspace.sh
+    #   else
+    #       echo $1 | /path/to/./workspace.sh    
+    #   fi
+    # }
+    # $ workspace [select menu digit] 
+    # for example, type 'workspace 1' to switch to workspace 'Home'
+# You can create a symbolic link to the script from your home directory
+    # ~$ ln -s /path/to/workspace.sh
+    # ~$ ./workspace.sh
+# Using keyboard shortcuts is the most convenient method
+    # open the keyboard shortcuts settings window and add a custom shortcut for every workspace
+    # for the 'Command' field use - 'bash -c "echo [select menu digit] | /path/to/workspace.sh"' 
+    # for example:
+        # Name: Switch to Workspace Home
+        # Command: bash -c "echo 1 | /path/to/workspace.sh"
+        # Shortcut: Super+1
+### ###
+
 ### Options ###
 workspace_names=(Home Work Read Movie CTRL)
 # if using terminator, it's better to set any custom commands you want to run on launch in the layout options
