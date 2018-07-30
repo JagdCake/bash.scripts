@@ -1,5 +1,10 @@
 #!/bin/bash
 
+### Description ###
+# Loop through an array of websites
+# Print '[website] ONLINE / OFFLINE' for each one, depending on the response status code
+### ###
+
 ### Usage ###
 # You can just create an alias for the script in '.bashrc' and run it from a terminal
     # alias checkwebsites='/path/to/./check_websites.sh'
