@@ -34,7 +34,7 @@
 <p>Dependencies: None</p>
 
 <ul>
-  <li>Enter your weight (in kilograms) every monday morning</li>
+  <li>Enter your weight (in kilograms) once every week</li>
   <li>Log the current workout week's number</li>
   <li>Log the current date</li>
   <li>Convert the weight from kg to pounds and log both values</li>
