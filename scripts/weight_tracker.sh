@@ -17,8 +17,11 @@
 # usable only for weekly weight tracking
 ### ###
 
+### Options ###
 # log file location
 log=~/Desktop/weight.txt
+### ###
+
 # Log format
 # Week: #
 # Date: ## Month ####
