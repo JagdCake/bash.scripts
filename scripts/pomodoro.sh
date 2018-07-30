@@ -1,10 +1,19 @@
 #!/bin/bash
 
-# https://en.wikipedia.org/wiki/Pomodoro_Technique
+### Description ###
+# Pomodoro timer, see - https://en.wikipedia.org/wiki/Pomodoro_Technique
+# Start an x minute timer
+# Print 'x minutes have passed' every x minutes
+# Produce an audible 'stop' after x minutes and print a checkmark
+# Allow an x minute break
+# Produce an audible 'start' after the break and restart the timer
+# Repeat from the start until the fourth checkmark and then allow an x minute break
+# Repeat from the start
+### ###
 
 # if spd-say sound is crackling, open '/usr/share/defaults/speech-dispatcher/speechd.conf' and change 'AudioOutputMethod' to 'libao'
 
-### options ###
+### Options ###
 pomodoro_time=25
 small_break=5
 big_break=20
