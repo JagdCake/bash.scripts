@@ -1,5 +1,14 @@
 #!/bin/bash
 
+### Description ###
+# Choose between shutdown, reboot and cancel
+# Close all applications specified inside an array
+# Log system startup time and date
+# Log system shutdown / reboot time and date
+# Log system uptime
+# Power system off OR reboot after a specified amount of time
+### ###
+
 # ===================
 # Close applications
 # ===================
