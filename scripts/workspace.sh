@@ -8,6 +8,19 @@
 
 ### Options ###
 workspace_names=(Home Work Read Movie CTRL)
+workspace_commands() {
+    if [ $1 -eq 0 ]; then
+        terminator -l custom
+    elif [ $1 -eq 1 ]; then
+        terminator -l neovim
+    elif [ $1 -eq 2 ]; then
+        terminator -l light_reading -e "neovim -u ~/.config/nvim/reader.vim"
+    elif [ $1 -eq 3 ]; then
+        terminator -l movie
+    elif [ $1 -eq 4 ]; then
+        terminator -l default
+    fi
+}
 ### ###
 
 switch_workspace() {
