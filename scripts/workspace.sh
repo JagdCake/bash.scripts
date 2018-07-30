@@ -23,11 +23,26 @@ workspace_commands() {
 }
 ### ###
 
+workspace_is_active() {
+    # Source: https://stackoverflow.com/a/27074039/8980616
+    xdotool search --onlyvisible --desktop $1 --class terminator getwindowname %@ > /dev/null
+
+    if [ $? -eq 0 ]; then
+        true
+    else
+        false
+    fi
+}
+
 switch_to() {
     workspace_number=$1
 
-    xdotool set_desktop $workspace_number 
-    workspace_commands $workspace_number 
+    if workspace_is_active $workspace_number; then
+        xdotool set_desktop $workspace_number
+    else
+        xdotool set_desktop $workspace_number 
+        workspace_commands $workspace_number 
+    fi
 }
 
 switch_workspace() {
