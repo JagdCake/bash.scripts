@@ -49,6 +49,7 @@
 </ul>
 
 <h1>pomodoro.sh</h1>
+<p>Pomodoro timer, see - https://en.wikipedia.org/wiki/Pomodoro_Technique</p>
 <p>Dependencies: speech-dispatcher</p>
 
 <ul>
