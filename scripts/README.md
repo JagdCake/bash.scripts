@@ -61,3 +61,11 @@
   <li>Repeat from the start</li>
 </ul>
 
+<h1>workspace.sh</h1>
+<p>Dependencies: xdotool</p>
+
+<ul>
+  <li>Choose a workspace from a pre-defined list and switch to it</li>
+  <li>Run any specified commands in that new workspace, but only if it's inactive (no running apps)</li>
+  <li>Change the background depending on the workspace</li>
+</ul>
