@@ -11,7 +11,9 @@
 # Repeat from the start
 ### ###
 
-# if spd-say sound is crackling, open '/usr/share/defaults/speech-dispatcher/speechd.conf' and change 'AudioOutputMethod' to 'libao'
+### Troubleshooting ###
+# if the 'spd-say' sound is crackling, open '/usr/share/defaults/speech-dispatcher/speechd.conf' and change 'AudioOutputMethod' to 'libao'
+### ###
 
 ### Options ###
 pomodoro_time=25
