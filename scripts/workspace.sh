@@ -8,13 +8,14 @@
 
 ### Options ###
 workspace_names=(Home Work Read Movie CTRL)
+# if using terminator, it's better to set any custom commands you want to run on launch in the layout options
 workspace_commands() {
     if [ $1 -eq 0 ]; then
         terminator -l custom
     elif [ $1 -eq 1 ]; then
         terminator -l neovim
     elif [ $1 -eq 2 ]; then
-        terminator -l light_reading -e "neovim -u ~/.config/nvim/reader.vim"
+        terminator -l light_reading
     elif [ $1 -eq 3 ]; then
         terminator -l movie
     elif [ $1 -eq 4 ]; then
