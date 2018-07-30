@@ -28,14 +28,23 @@
     # ~$ ./shut_down.sh
 ### ###
 
+### Options ###
+# applications to close
+apps=(transmission-gtk firefox steam) 
+app_names=(Transmission, Firefox, Steam)
+
+# set the time (in seconds) to pause before shutdown / reboot 
+time_to_shutdown=10
+time_to_reboot=5
+
+# path to log file 
+log=~/Desktop/shutdown.txt
+### ###
+
 # ===================
 # Close applications
 # ===================
 close_apps() {
-    # array of applications to close
-    apps=(transmission-gtk firefox steam) 
-    app_names=(Transmission, Firefox, Steam)
-
     # using SIGTERM to allow programs to exit cleanly
     # "@" calls the array items as separate strings
     kill -s SIGTERM `pidof "${apps[@]}"` && echo "Closing "${app_names[@]}""
@@ -44,24 +53,19 @@ close_apps() {
 # ===================
 # Write to log
 # ===================
-log=~/Desktop/shutdown.txt
-
 # if the log file doesn't exist, create it
 if [ -e "$log" ]; then
     touch "$log"
 fi
 
 shutdown_or_reboot() {
-    time_to_shutdown=10
-    time_to_reboot=5
-
     close_apps
 
     # startup time and date 
     echo "System powered on at: $startTime on `echo $startDate | awk -F - '{print $3}'` ${months[$sM]} `echo $startDate | awk -F - '{print $1}'`" >> "$log"
 
     if [ $1 == 'shutdown' ]; then
-    # current time + 10 sec / 5 sec (hh:mm:ss) and the date 
+    # current time + [time_to_shutdown] sec / [time_to_reboot] sec (hh:mm:ss) and the date 
         echo "System shutdown at: `date +%H:%M:%S -d "+$time_to_shutdown sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> "$log" 
     elif [ $1 == 'reboot' ]; then
         echo "System rebooted at: `date +%H:%M:%S -d "+$time_to_reboot sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> "$log"
