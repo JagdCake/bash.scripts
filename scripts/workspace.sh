@@ -23,29 +23,36 @@ workspace_commands() {
 }
 ### ###
 
+switch_to() {
+    workspace_number=$1
+
+    xdotool set_desktop $workspace_number 
+    workspace_commands $workspace_number 
+}
+
 switch_workspace() {
     echo 'Choose a workspace:'
     select workspace_name in ${workspace_names[@]} "Cancel"; do
         case "$workspace_name" in
             ${workspace_names[0]} ) 
                 workspace=0
-                xdotool set_desktop $workspace
+                switch_to $workspace
                 break;;
             ${workspace_names[1]} ) 
                 workspace=1
-                xdotool set_desktop $workspace
+                switch_to $workspace
                 break;;
             ${workspace_names[2]} )
                 workspace=2
-                xdotool set_desktop $workspace
+                switch_to $workspace
                 break;;
             ${workspace_names[3]} )
                 workspace=3
-                xdotool set_desktop $workspace
+                switch_to $workspace
                 break;;
             ${workspace_names[4]} )
                 workspace=4
-                xdotool set_desktop $workspace
+                switch_to $workspace
                 break;;
             Cancel )
                 exit;;
