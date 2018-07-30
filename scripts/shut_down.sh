@@ -9,6 +9,25 @@
 # Power system off OR reboot after a specified amount of time
 ### ###
 
+### Usage ###
+# You can just create an alias for the script in '.bashrc' and run it from a terminal
+    # alias shutdownorwhat='/path/to/./shut_down.sh'
+    # $ shutdownorwhat
+# or a function to optionally skip the menu
+    # shutdownorwhat() {
+    #   if [ -z $1 ]; then
+    #       /path/to/./shut_down.sh
+    #   else
+    #       echo $1 | /path/to/./shut_down.sh    
+    #   fi
+    # }
+    # $ shutdownorwhat [select menu digit] 
+    # for example, type 'shutdownorwhat 1' to power off the system
+# You can create a symbolic link to the script from your home directory
+    # ~$ ln -s /path/to/shut_down.sh
+    # ~$ ./shut_down.sh
+### ###
+
 # ===================
 # Close applications
 # ===================
