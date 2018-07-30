@@ -11,6 +11,17 @@
 # Repeat from the start
 ### ###
 
+### Usage ###
+# You can just create an alias for the script in '.bashrc' and run it from a terminal
+    # alias pomodoro='/path/to/./pomodoro.sh'
+    # $ pomodoro
+# You can create a symbolic link to the script from your home directory
+    # ~$ ln -s /path/to/pomodoro.sh
+    # ~$ ./pomodoro.sh
+# The script needs its own terminal window / tab to work (run the timer, show messages)
+    # stop it with CTRL+C or by closing the terminal
+### ###
+
 ### Troubleshooting ###
 # if the 'spd-say' sound is crackling, open '/usr/share/defaults/speech-dispatcher/speechd.conf' and change 'AudioOutputMethod' to 'libao'
 ### ###
