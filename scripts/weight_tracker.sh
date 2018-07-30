@@ -1,5 +1,12 @@
 #!/bin/bash
 
+### Description ###
+# Enter your weight (in kilograms) once every week
+# Log the current workout week's number
+# Log the current date
+# Convert the weight from kg to pounds and log both values
+### ###
+
 ### Usage ###
 # You can just create an alias for the script in '.bashrc' and run it from a terminal
     # alias weighttracker='/path/to/./weight_tracker.sh'
