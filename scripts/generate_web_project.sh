@@ -34,3 +34,11 @@ verb='add'
 packages_to_install=('express' 'ejs' 'pg-promise' 'body-parser')
 ### ###
 
+name_the_project() {
+	read -p "Enter project name: " project_name
+
+	while [ -z "$project_name" ]; do
+		echo "Please enter a project name."
+		name_the_project
+	done
+}
