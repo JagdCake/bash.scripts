@@ -99,3 +99,22 @@ generate_project() {
 	fi
 }
 
+select project in "${project_type_options[@]}" "Cancel"; do
+	case "$project" in
+		"${project_type_options[0]}" )
+			choice=1
+			generate_project
+			exit;;
+		"${project_type_options[1]}" )
+			choice=2
+			generate_project
+			exit;;
+		"${project_type_options[2]}" )
+			choice=3
+			generate_project
+			exit;;
+		Cancel )
+			exit;;
+	esac
+done			
+
