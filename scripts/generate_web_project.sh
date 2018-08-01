@@ -17,3 +17,8 @@ option_3_files_dir=~/Documents/web_dev/1_templated/wordpress_site/
 option_1_hidden_files=("/home/jagdcake/Documents/web_dev/1_templates/node_app/.eslintrc.json")
 option_2_hidden_files=()
 option_3_hidden_files=()
+
+# files and folders to (git)ignore
+option_1_ignore=("TODO" "config.js" "node_modules/")
+option_2_ignore=()
+option_3_ignore=()
