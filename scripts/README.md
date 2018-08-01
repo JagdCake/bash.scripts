@@ -70,3 +70,13 @@
   <li>Run any specified commands in that new workspace, but only if it's inactive (no running apps)</li>
   <li>Change the background depending on the workspace</li>
 </ul>
+
+<h1>generate_web_project.sh</h1>
+<p>Dependencies: git</p>
+
+<ul>
+  <li>Choose the type of web project you're starting (Node.js app, WordPress website, static site, etc.)</li>
+  <li>Enter a project name and create a directory of the same name in the current directory</li>
+  <li>Copy template files and folders from a predefined location to the project dir</li>
+  <li>Install packages (optionally), initialize a git repository, add files / folders to .gitignore</li>
+</ul>
