@@ -7,6 +7,25 @@
 # Install packages (optionally), initialize a git repository, add files / folders to .gitignore
 ### ###
 
+### Usage ###
+# You can just create an alias for the script in '.bashrc' and run it from a terminal
+    # alias generatewebproject='/path/to/./generate_web_project.sh'
+    # $ generatewebproject
+# or a function to optionally skip the menu
+    # generatewebproject() {
+    #   if [ -z $1 ]; then
+    #       /path/to/./generate_web_project.sh
+    #   else
+    #       echo $1 | /path/to/./generate_web_project.sh    
+    #   fi
+    # }
+    # $ generatewebproject [select menu digit] 
+    # for example, type 'generatewebproject 1' to start generating a 'Node App' project in the current directory
+# You can create a symbolic link to the script from your home directory
+    # ~$ ln -s /path/to/generate_web_project.sh
+    # ~$ ./generate_web_project.sh
+### ###
+
 ### Options ###
 project_type_options=("Node App" "Static site" "WordPress site")
 # paths to template files
