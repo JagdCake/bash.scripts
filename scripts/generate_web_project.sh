@@ -22,3 +22,8 @@ option_3_hidden_files=()
 option_1_ignore=("TODO" "config.js" "node_modules/")
 option_2_ignore=()
 option_3_ignore=()
+
+# messages to show after project creation
+option_1_message="Don't forget to update config.js"
+option_2_message=""
+option_3_message=""
