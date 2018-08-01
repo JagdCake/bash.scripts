@@ -79,3 +79,23 @@ init_git_and_message() {
 	fi
 }
 
+generate_project() {
+	name_the_project	
+
+	mkdir "$project_name" 
+
+	cd "$project_name"
+
+	if [ $choice -eq 1 ]; then
+		copy_template_over "$option_1_files_dir" option_1_hidden_files
+		$package_manager init && $package_manager $verb "${packages_to_install[@]}"
+		init_git_and_message option_1_ignore "$option_1_message"
+	elif [ $choice -eq 2 ]; then
+		copy_template_over "$option_2_files_dir" option_2_hidden_files
+		init_git_and_message option_2_ignore "$option_2_message"
+	elif [ $choice -eq 3 ]; then
+		copy_template_over "$option_3_files_dir" option_3_hidden_files
+		init_git_and_message option_3_ignore "$option_3_message"
+	fi
+}
+
