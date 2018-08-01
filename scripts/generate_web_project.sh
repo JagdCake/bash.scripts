@@ -27,3 +27,10 @@ option_3_ignore=()
 option_1_message="Don't forget to update config.js"
 option_2_message=""
 option_3_message=""
+
+#!!! Options for option 1 - 'Node App', only !!!
+package_manager='yarn'
+verb='add'
+packages_to_install=('express' 'ejs' 'pg-promise' 'body-parser')
+### ###
+
