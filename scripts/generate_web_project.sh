@@ -42,3 +42,19 @@ name_the_project() {
 		name_the_project
 	done
 }
+
+copy_template_over() {
+	template_dir="$1"
+
+	cp -r "$template_dir"* .
+
+	if [ ! -z "$2" ]; then
+		# Source: https://stackoverflow.com/questions/16461656/how-to-pass-array-as-an-argument-to-a-function-in-bash#16461878<Paste>
+		array_argument_2=$2[@]
+		hidden_files=("${!array_argument_2}")
+
+		for hidden_file in "${hidden_files[@]}"; do
+			cp -r "$hidden_file" .
+		done
+	fi
+}
