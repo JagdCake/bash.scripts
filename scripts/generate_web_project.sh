@@ -58,3 +58,24 @@ copy_template_over() {
 		done
 	fi
 }
+
+init_git_and_message() {
+
+	git init && 
+	if [ ! -z "$1" ]; then
+		array_argument_1=$1[@]
+		files_to_ignore=("${!array_argument_1}")
+
+		for file in "${files_to_ignore[@]}"; do
+			echo "$file" >> .gitignore 
+		done
+	fi
+
+	git add . && git commit -am "Initial commit"
+	
+	if [ ! -z "$2" ]; then
+		message="$2"
+		echo -e "\n${message}"
+	fi
+}
+
