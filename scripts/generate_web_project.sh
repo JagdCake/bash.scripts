@@ -6,3 +6,6 @@
 # Copy template files and folders from a predefined location to the project dir
 # Install packages, initialize a git repository, add files / folders to .gitignore
 ### ###
+
+### Options ###
+project_type_options=("Node App" "Static site" "WordPress site")
