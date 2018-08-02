@@ -62,7 +62,7 @@ shutdown_or_reboot() {
     close_apps
 
     # startup time and date 
-    echo "System powered on at: $startTime on `echo $startDate | awk -F - '{print $3}'` ${months[$sM]} `echo $startDate | awk -F - '{print $1}'`" >> "$log"
+    echo "System powered on at: $startTime on `echo $startDate | awk -F - '{ print $3 }'` ${months[$sMonth]} `echo $startDate | awk -F - '{print $1}'`" >> "$log"
 
     if [ $1 == 'shutdown' ]; then
     # current time + [time_to_shutdown] sec / [time_to_reboot] sec (hh:mm:ss) and the date 
