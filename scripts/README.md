@@ -34,7 +34,14 @@
 <p>Dependencies: None</p>
 
 <ul>
-  <li>Enter your weight (in kilograms) once every week</li>
+  <li>Enter your weight (in kilograms) once every week (on a specified day)</li>
+  <ul>
+      <li>If you've already logged your weight for the week:</li>
+        <ul>
+            <li>show the change in weight gain / loss (in kilograms and pounds) from the start </li>
+            <li>show the change in weight gain / loss (in kilograms and pounds) since last week</li>
+        </ul>
+  </ul>
   <li>Log the current workout week's number</li>
   <li>Log the current date</li>
   <li>Convert the weight from kg to pounds and log both values</li>
