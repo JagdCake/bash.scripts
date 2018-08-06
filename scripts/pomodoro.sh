@@ -40,7 +40,7 @@ start_message='Start!'
 stop_message='Stop!'
 ### ###
 
-# Source: https://stackoverflow.com/questions/38868665/multiplying-strings-in-bash-script/38868864#38868864 
+# Source: https://stackoverflow.com/questions/38868665/multiplying-strings-in-bash-script/38868864#38868864
 multiply_string() {
     string="$1"
     count="$2"

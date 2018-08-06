@@ -16,10 +16,10 @@
     #   if [ -z $1 ]; then
     #       /path/to/./generate_web_project.sh
     #   else
-    #       echo $1 | /path/to/./generate_web_project.sh    
+    #       echo $1 | /path/to/./generate_web_project.sh
     #   fi
     # }
-    # $ generatewebproject [select menu digit] 
+    # $ generatewebproject [select menu digit]
     # for example, type 'generatewebproject 1' to start generating a 'Node App' project in the current directory
 # You can create a symbolic link to the script from your home directory
     # ~$ ln -s /path/to/generate_web_project.sh
@@ -80,18 +80,18 @@ copy_template_over() {
 
 init_git_and_message() {
 
-	git init && 
+	git init &&
 	if [ ! -z "$1" ]; then
 		array_argument_1=$1[@]
 		files_to_ignore=("${!array_argument_1}")
 
 		for file in "${files_to_ignore[@]}"; do
-			echo "$file" >> .gitignore 
+			echo "$file" >> .gitignore
 		done
 	fi
 
 	git add . && git commit -am "Initial commit"
-	
+
 	if [ ! -z "$2" ]; then
 		message="$2"
 		echo -e "\n${message}"
@@ -99,9 +99,9 @@ init_git_and_message() {
 }
 
 generate_project() {
-	name_the_project	
+	name_the_project
 
-	mkdir "$project_name" 
+	mkdir "$project_name"
 
 	cd "$project_name"
 
@@ -135,5 +135,5 @@ select project in "${project_type_options[@]}" "Cancel"; do
 		Cancel )
 			exit;;
 	esac
-done			
+done
 

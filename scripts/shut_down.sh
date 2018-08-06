@@ -18,10 +18,10 @@
     #   if [ -z $1 ]; then
     #       /path/to/./shut_down.sh
     #   else
-    #       echo $1 | /path/to/./shut_down.sh    
+    #       echo $1 | /path/to/./shut_down.sh
     #   fi
     # }
-    # $ shutdownorwhat [select menu digit] 
+    # $ shutdownorwhat [select menu digit]
     # for example, type 'shutdownorwhat 1' to power off the system
 # You can create a symbolic link to the script from your home directory
     # ~$ ln -s /path/to/shut_down.sh
@@ -30,14 +30,14 @@
 
 ### Options ###
 # applications to close
-apps=(transmission-gtk firefox steam) 
+apps=(transmission-gtk firefox steam)
 app_names=(Transmission, Firefox, Steam)
 
-# set the time (in seconds) to pause before shutdown / reboot 
+# set the time (in seconds) to pause before shutdown / reboot
 time_to_shutdown=10
 time_to_reboot=5
 
-# path to log file 
+# path to log file
 log=~/Desktop/shutdown.txt
 ### ###
 
@@ -61,12 +61,12 @@ fi
 shutdown_or_reboot() {
     close_apps
 
-    # startup time and date 
+    # startup time and date
     echo "System powered on at: $startTime on `echo $startDate | awk -F - '{ print $3 }'` ${months[$sMonth]} `echo $startDate | awk -F - '{print $1}'`" >> "$log"
 
     if [ $1 == 'shutdown' ]; then
-    # current time + [time_to_shutdown] sec / [time_to_reboot] sec (hh:mm:ss) and the date 
-        echo "System shutdown at: `date +%H:%M:%S -d "+$time_to_shutdown sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> "$log" 
+    # current time + [time_to_shutdown] sec / [time_to_reboot] sec (hh:mm:ss) and the date
+        echo "System shutdown at: `date +%H:%M:%S -d "+$time_to_shutdown sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> "$log"
     elif [ $1 == 'reboot' ]; then
         echo "System rebooted at: `date +%H:%M:%S -d "+$time_to_reboot sec"` on `date +%d` ${months[$cMonth]} `date +%Y`" >> "$log"
     fi
@@ -89,7 +89,7 @@ months=(Null Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
 # get the start month's number in format "##", e.g. 02 = February
 sM="`echo $startDate | awk -F - '{print $2}'`"
 
-# get the current month's number  
+# get the current month's number
 cM=`date +%m`
 
 # removes the 0 from month numbers below 10 so they correspond to that month's index in the array, e.g. 02 becomes 2 which is the index of Feb
@@ -115,13 +115,13 @@ select thing_to_do in "Shutdown" "Reboot" "Cancel"; do
             shutdown_or_reboot shutdown
             # turn system off after 10 seconds
             sleep ${time_to_shutdown}s; shutdown -P now
-            exit;; 
+            exit;;
         Reboot )
             shutdown_or_reboot reboot
             # reboot system after 5 seconds
             sleep ${time_to_reboot}s; shutdown -r now
-            exit;; 
-        Cancel ) 
+            exit;;
+        Cancel )
             exit;;
     esac
 done
