@@ -54,10 +54,12 @@ show_weight_change_since() {
 
     if [ $(echo "$start_weight > $current_weight" | bc) -eq 1 ]; then
         echo "You have lost: $kg_difference kg / $lb_difference lb, since "$point_in_time""
-    else
+    elif [ $(echo "$start_weight < $current_weight" | bc) -eq 1 ]; then
         kg_positive=$(echo "scale=1; $kg_difference * -1" | bc)
         lb_positive=$(echo "scale=1; $lb_difference * -1" | bc)
         echo "You have gained: $kg_positive kg / $lb_positive lb, since "$point_in_time""
+    else
+        echo "Your weight is the same as "$point_in_time": $start_weight kg / $(echo "scale=1; $start_weight / $lb" | bc -l) lb"
     fi
 }
 
