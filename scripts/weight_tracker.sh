@@ -83,8 +83,8 @@ weight_prompt() {
         weightprompt
     done
 
-    # get last week's number (it has to already be in the log file before you run the script for the first time)
-    last_week=$(tail -n 4 "$log" | head -n 1 | awk '{ print $2 }')
+    # get last week's number and if the log file doesn't exist don't throw an error
+    last_week=$(tail -n 4 "$log" 2>/dev/null | head -n 1 | awk '{ print $2 }')
 
     week=$(($last_week+1))
 
