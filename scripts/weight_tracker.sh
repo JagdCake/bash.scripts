@@ -28,21 +28,31 @@ log=~/Desktop/weight.txt
 # Weight: ##.# kg / ##.# lb
 # \n (newline)
 
-# get last week's number (it has to already be in the log file before you run the script for the first time)
-last_week=$(tail -n 4 "$log" | head -n 1 | awk '{printf $2}')
+lb=0.45359
 
-week=$(($last_week+1))
+show_weight_change_since() {
+    if [ "$1" == 'start' ]; then
+        start_weight=$(head -n 3 "$log" | tail -n 1 | awk '{ print $2 }')
+        point_in_time=$(head -n 2 "$log" | tail -n 1 | awk -F':' '{ print $2 }' | awk '{$1=$1};1')
+    elif [ "$1" == 'week' ]; then
+        start_weight=$(tail -n 8 "$log" | head -n 3 | tail -n 1 | awk '{ print $2 }')
+        point_in_time='last week'
+    fi
 
-# e.g. 21 Feb 2018
-date=`date "+%d %b %Y"`
+    current_weight=$(tail -n 2 "$log" | head -n 1 | awk '{ print $2 }')
 
-weightprompt () {
-# enter weight in format: ##.#, e.g. 78.3
-	read -p "Weight: " kg
+    kg_difference=$(echo "scale=1; $start_weight - $current_weight" | bc -l)
+    lb_difference=$(echo "scale=1; $kg_difference / $lb" | bc -l)
+
+    if [ $(echo "$start_weight > $current_weight" | bc) -eq 1 ]; then
+        echo "You have lost: $kg_difference kg / $lb_difference lb, since "$point_in_time""
+    else
+        kg_positive=$(echo "scale=1; $kg_difference * -1" | bc)
+        lb_positive=$(echo "scale=1; $lb_difference * -1" | bc)
+        echo "You have gained: $kg_positive kg / $lb_positive lb, since "$point_in_time""
+    fi
 }
 
-# prompt the user for input
-weightprompt
 
 # accept data only if it's formatted properly
 # regex is checking for any number followed by a dot and ending with a single digit
