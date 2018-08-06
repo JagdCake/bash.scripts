@@ -45,6 +45,7 @@ show_weight_change_since() {
 
     kg_difference=$(echo "scale=1; $start_weight - $current_weight" | bc -l)
     lb_difference=$(echo "scale=1; $kg_difference / $lb" | bc -l)
+        # this part = "$(echo "scale=1; $kg_difference / $lb" | bc -l)" converts the kg value into a floating-point lb value with the help of 'bc -l' ('bc' allows float division and the '-l' flag prints the result as a float too, while 'scale=1' limits the lb value to the first digit after the decimal point)
 
     if [ $(echo "$start_weight > $current_weight" | bc) -eq 1 ]; then
         echo "You have lost: $kg_difference kg / $lb_difference lb, since "$point_in_time""
@@ -78,8 +79,6 @@ weight_prompt() {
 
     # log the weight for the current week
     echo -e "Week: $week\nDate: "$date"\nWeight: $kg kg / "$(echo "scale=1; $kg / $lb" | bc -l) lb"\n" >> "$log"
-
-    # this part = "$(echo "scale=1; $kg / $lb" | bc -l)" converts the entered value into a floating-point lb value with the help of "bc -l" ("bc" allows float division and the "-l" flag prints the result as a float too, while "scale=1" limits the lb value to the first digit after the decimal point)
 }
 
 # day of the week (starts at 1 (Monday))
