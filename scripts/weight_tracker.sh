@@ -86,10 +86,14 @@ weight_prompt() {
     # get last week's number and if the log file doesn't exist don't throw an error
     last_week=$(tail -n 4 "$log" 2>/dev/null | head -n 1 | awk '{ print $2 }')
 
-    week=$(($last_week+1))
-
-    # log the weight for the current week
-    echo -e "Week: $week\nDate: "$date"\nWeight: $kg kg / "$(echo "scale=1; $kg / $lb" | bc -l) lb"\n" >> "$log"
+    # if the log file doesn't exist / is empty or doesn't follow the proper format create it (if necessary) and add a new correct entry
+    if [[ -z $last_week || ! $last_week =~ ^[0-9]+$ ]]; then
+        first_start
+    else
+        week=$(($last_week+1))
+        # log the weight for the current week
+        echo -e "Week: $week\nDate: "$date"\nWeight: $kg kg / "$(echo "scale=1; $kg / $lb" | bc -l) lb"\n" >> "$log"
+    fi
 }
 
 # day of the week (starts at 1 (Monday))
