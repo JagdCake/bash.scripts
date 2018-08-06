@@ -83,5 +83,14 @@ weight_prompt() {
     # this part = "$(echo "scale=1; $kg / $lb" | bc -l)" converts the entered value into a floating-point lb value with the help of "bc -l" ("bc" allows float division and the "-l" flag prints the result as a float too, while "scale=1" limits the lb value to the first digit after the decimal point)
 }
 
+# day of the week (starts at 1 (Monday))
+today=$(date +%u)
+last_date=$(tail -n 3 "$log" | head -n 1 | awk -F':' '{ print $2 }' | awk '{$1=$1};1')
 
+if [[ $day -eq $today && "$last_date" != "$date" ]]; then
+    weight_prompt
+else
+    show_weight_change_since 'start'
+    show_weight_change_since 'week'
+fi
 
