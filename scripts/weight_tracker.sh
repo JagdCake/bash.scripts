@@ -61,6 +61,17 @@ show_weight_change_since() {
 # e.g. 21 Feb 2018
 date=$(date "+%d %b %Y")
 
+first_start() {
+    read -p "Enter week number: " week
+
+    while [[ ! "$week" =~ ^[0-9]+$ ]]; do
+        echo "Please enter a number!"
+        first_start
+    done
+
+    echo -e "Week: $week\nDate: "$date"\nWeight: $kg kg / "$(echo "scale=1; $kg / $lb" | bc -l) lb"\n" >> "$log"
+}
+
 weight_prompt() {
     # enter weight in format: ##.#, e.g. 78.3
     read -p "Weight: " kg
