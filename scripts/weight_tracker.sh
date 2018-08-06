@@ -1,8 +1,11 @@
 #!/bin/bash
 
 ### Description ###
-# Enter your weight (in kilograms) once every week
-# Log the current workout week's number
+# Enter your weight (in kilograms) once every week (on a specified day)
+    # If you've already logged your weight for the week:
+        # show the change in weight gain / loss (in kilograms and pounds) from the start 
+        # show the change in weight gain / loss (in kilograms and pounds) since last week 
+# Log the current (workout) week's number
 # Log the current date
 # Convert the weight from kg to pounds and log both values
 ### ###
