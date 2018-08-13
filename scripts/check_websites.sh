@@ -15,7 +15,7 @@
 ### ###
 
 ### Options ###
-websites=(https://modeling.jagdcake.com/ https://dreams.jagdcake.com/)
+websites=(https://modeling.jagdcake.com/ https://dreams.jagdcake.com/ https://request.jagdcake.com)
 ### ###
 
 for i in ${websites[@]}
