@@ -19,6 +19,15 @@ if [ ! -d "$notes" ]; then
     mkdir -p "$notes"
 fi
 
+generate_format() {
+    read -p "Enter a title: " title
+
+    echo "Title: "$title"" >> "$notes"/"$topic"
+    echo "$(date)" >> "$notes"/"$topic" 
+    echo "- " >> "$notes"/"$topic" 
+    echo -e "Source:\n" >> "$notes"/"$topic" 
+}
+
 add_topic() {
     read -p 'Enter a topic name: ' topic
 
