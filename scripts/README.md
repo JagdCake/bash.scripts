@@ -87,3 +87,15 @@
   <li>Copy template files and folders from a predefined location to the project dir</li>
   <li>Install packages (optionally), initialize a git repository, add files / folders to .gitignore</li>
 </ul>
+
+<h1>take_notes.sh</h1>
+<p>Dependencies: fzf, neovim(optional)</p>
+
+<ul>
+  <li>Choose between adding a new topic / notes on a topic or displaying all notes on a topic</li>
+  <li>If adding a new topic, choose a name and enter a title for the first set of notes</li>
+  <li>If adding notes, select a topic from all the added ones and enter a title</li>
+  <li>The script will generate formatted lines of text for the title, date, first note and the source</li>
+  <li>The script will then open the notes file in your favorite text editor (default is 'neovim')</li>
+  <li>If displaying notes, the script will open the file in the chosen program (default is 'less')</li>
+</ul>
