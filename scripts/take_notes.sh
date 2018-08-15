@@ -63,3 +63,37 @@ select_topic() {
     topic="$(ls "$notes" | fzf)"
 }
 
+select_menu() {
+    topics="$(ls -A "$notes")"
+
+    # check to see of there are any topics in the notes folder
+    if [ -z "$topics" ]; then
+        add_topic &&
+        add_notes
+        select_menu
+    else
+        select choice in "Add new topic" "Add notes" "Show notes" "Quit"; do
+            case "$choice" in 
+                "Add new topic" )
+                    add_topic &&
+                    add_notes
+                    break;;
+                "Add notes" )
+                    select_topic &&
+                    add_notes
+                    break;;
+                "Show notes" )
+                    select_topic &&
+                    app_open "$notes"/"$topic"
+                    break;;
+                "Quit" )
+                    exit;;
+            esac
+        done
+
+        select_menu
+    fi
+}
+
+select_menu
+
