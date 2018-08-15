@@ -38,6 +38,11 @@ generate_format() {
     echo -e "Source:\n" >> "$notes"/"$topic" 
 }
 
+add_notes() {
+    generate_format
+    app_edit "$notes"/"$topic"
+}
+
 add_topic() {
     read -p 'Enter a topic name: ' topic
 
