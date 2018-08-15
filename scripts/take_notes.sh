@@ -30,6 +30,8 @@ if [ ! -d "$notes" ]; then
 fi
 
 generate_format() {
+    # TODO Enhancement:
+    # sanitize the title variable
     read -p "Enter a title: " title
 
     echo "Title: "$title"" >> "$notes"/"$topic"
