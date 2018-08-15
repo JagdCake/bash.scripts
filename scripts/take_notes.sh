@@ -13,3 +13,9 @@
 # path to notes folder
 notes=~/Documents/text_files/notes/
 ### ###
+
+# create the notes folder if it doesn't already exist
+if [ ! -d "$notes" ]; then
+    mkdir -p "$notes"
+fi
+
