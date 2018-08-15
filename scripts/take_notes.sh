@@ -19,3 +19,18 @@ if [ ! -d "$notes" ]; then
     mkdir -p "$notes"
 fi
 
+add_topic() {
+    read -p 'Enter a topic name: ' topic
+
+    while [ -z "$topic" ]; do
+        echo 'You need a name for the topic'
+        add_topic
+    done
+
+    # removes tabs, leading and trailing whitespace from the file name
+    topic=$(echo "$topic" | sed 's/^[ \t]*//;s/[ \t]*$//')
+
+    # 'touch' doesn't overwrite already existing files 
+    touch "$notes"/"$topic"
+}
+
