@@ -1,0 +1,11 @@
+#!/bin/bash
+
+### Description ###
+# Choose between adding a new topic / notes on a topic or displaying all notes on a topic
+# If adding a new topic, choose a name and enter a title for the first set of notes
+# If adding notes, select a topic from all the added ones and enter a title 
+# The script will generate formatted lines of text for the title, date, first note and the source
+# The script will then open the notes file in your favorite text editor (default is 'neovim')
+# If displaying notes, the script will open the file in the chosen program (default is 'less')
+### ###
+
