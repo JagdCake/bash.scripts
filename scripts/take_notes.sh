@@ -9,6 +9,15 @@
 # If displaying notes, the script will open the file in the chosen program (default is 'less')
 ### ###
 
+### Usage ###
+# You can just create an alias for the script in '.bashrc' and run it from a terminal
+    # alias take_notes='/path/to/./take_notes.sh'
+    # $ take_notes
+# You can create a symbolic link to the script from your home directory
+    # ~$ ln -s /path/to/take_notes.sh
+    # ~$ ./take_notes.sh
+### ###
+
 ### Options ###
 # path to notes folder
 notes=~/Documents/text_files/notes/
