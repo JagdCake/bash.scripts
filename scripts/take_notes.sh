@@ -12,6 +12,16 @@
 ### Options ###
 # path to notes folder
 notes=~/Documents/text_files/notes/
+
+# app for editing notes
+app_edit() {
+    nvim +"normal Gkka " "$1"
+}
+
+# app for reading notes
+app_open() {
+    less "$1"
+}
 ### ###
 
 # create the notes folder if it doesn't already exist
