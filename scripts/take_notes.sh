@@ -58,3 +58,8 @@ add_topic() {
     touch "$notes"/"$topic"
 }
 
+select_topic() {
+    # use fuzzy search to select a topic
+    topic="$(ls "$notes" | fzf)"
+}
+
