@@ -9,3 +9,7 @@
 # If displaying notes, the script will open the file in the chosen program (default is 'less')
 ### ###
 
+### Options ###
+# path to notes folder
+notes=~/Documents/text_files/notes/
+### ###
