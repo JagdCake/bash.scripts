@@ -38,7 +38,7 @@ time_to_shutdown=10
 time_to_reboot=5
 
 # path to log file
-log=~/Desktop/shutdown.txt
+log=~/Documents/text_files/my_logs/shutdown_log
 ### ###
 
 # ===================

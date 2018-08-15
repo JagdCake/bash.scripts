@@ -22,7 +22,7 @@
 
 ### Options ###
 # log file location
-log=~/Desktop/weight.txt
+log=~/Documents/text_files/my_logs/weight_log
 
 declare -A days
 days=([Monday]=1 [Tuesday]=2 [Wednesday]=3 [Thursday]=4 [Friday]=5 [Saturday]=6 [Sunday]=7)
