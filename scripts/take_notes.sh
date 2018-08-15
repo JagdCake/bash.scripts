@@ -3,7 +3,7 @@
 ### Description ###
 # Choose between adding a new topic / notes on a topic or displaying all notes on a topic
 # If adding a new topic, choose a name and enter a title for the first set of notes
-# If adding notes, select a topic from all the added ones and enter a title 
+# If adding notes, select a topic from all the added ones and enter a title
 # The script will generate formatted lines of text for the title, date, first note and the source
 # The script will then open the notes file in your favorite text editor (default is 'neovim')
 # If displaying notes, the script will open the file in the chosen program (default is 'less')
@@ -44,9 +44,9 @@ generate_format() {
     read -p "Enter a title: " title
 
     echo "Title: "$title"" >> "$notes"/"$topic"
-    echo "$(date)" >> "$notes"/"$topic" 
-    echo "- " >> "$notes"/"$topic" 
-    echo -e "Source:\n" >> "$notes"/"$topic" 
+    echo "$(date)" >> "$notes"/"$topic"
+    echo "- " >> "$notes"/"$topic"
+    echo -e "Source:\n" >> "$notes"/"$topic"
 }
 
 add_notes() {
@@ -65,7 +65,7 @@ add_topic() {
     # removes tabs, leading and trailing whitespace from the file name
     topic=$(echo "$topic" | sed 's/^[ \t]*//;s/[ \t]*$//')
 
-    # 'touch' doesn't overwrite already existing files 
+    # 'touch' doesn't overwrite already existing files
     touch "$notes"/"$topic"
 }
 
@@ -84,7 +84,7 @@ select_menu() {
         select_menu
     else
         select choice in "Add new topic" "Add notes" "Show notes" "Quit"; do
-            case "$choice" in 
+            case "$choice" in
                 "Add new topic" )
                     add_topic &&
                     add_notes
