@@ -89,6 +89,20 @@ select_topic() {
     topic="$(ls -p "$notes" | grep -v / | awk -F'.md' '{ print $1 }' | fzf)"
 }
 
+create_pdf() {
+    pdf_file=""$notes"/pdf_notes/"$topic".pdf"
+    md_file=""$notes"/"$topic".md"
+
+    # create pdf file only if one doesn't already exist or if it's not up to date with the md file
+    if [[ -f "$pdf_file" && ! "$md_file" -nt "$pdf_file" ]]; then
+        app_open_pdf "$pdf_file"
+    else
+        ebook-convert "$md_file" "$pdf_file" $(echo "$convert_options") > /dev/null 2>&1
+        app_open_pdf "$pdf_file"
+        rm "$notes"/*.html
+    fi
+}
+
 display_notes() {
     echo "Display notes in:"
     select mode in "Raw markdown" "PDF file converted from md" "Cancel"; do
@@ -97,9 +111,7 @@ display_notes() {
                 app_open_md "$notes"/"$topic".md
                 break;;
             "PDF file converted from md" )
-                ebook-convert "$notes"/"$topic".md "$notes"/pdf_notes/"$topic".pdf $(echo "$convert_options") > /dev/null 2>&1
-                app_open_pdf "$notes"/pdf_notes/"$topic".pdf
-                rm "$notes"/*.html
+                create_pdf
                 break;;
             "Cancel" )
                 exit;;
