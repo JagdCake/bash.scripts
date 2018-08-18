@@ -34,9 +34,14 @@ app_edit() {
     nvim +"normal Gkkka " "$1"
 }
 
-# app for reading notes
-app_open() {
+# app for opening .md notes
+app_open_md() {
     less "$1"
+}
+
+# app for opening .pdf notes
+app_open_pdf() {
+    ~/firefox/./firefox "$1"
 }
 ### ###
 
