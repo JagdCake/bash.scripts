@@ -87,6 +87,22 @@ add_topic() {
 select_topic() {
     # use fuzzy search to select a topic
     topic="$(ls "$notes" | awk -F'.md' '{ print $1 }' | fzf)"
+display_notes() {
+    echo "Display notes in:"
+    select mode in "Raw markdown" "PDF file converted from md" "Cancel"; do
+        case "$mode" in
+            "Raw markdown" )
+                app_open_md "$notes"/"$topic".md
+                break;;
+            "PDF file converted from md" )
+                ebook-convert "$notes"/"$topic".md "$notes"/pdf_notes/"$topic".pdf $(echo "$convert_options") > /dev/null 2>&1
+                app_open_pdf "$notes"/pdf_notes/"$topic".pdf
+                rm "$notes"/*.html
+                break;;
+            "Cancel" )
+                exit;;
+        esac
+    done
 }
 
 select_menu() {
@@ -110,7 +126,7 @@ select_menu() {
                     break;;
                 "Show notes" )
                     select_topic &&
-                    app_open "$notes"/"$topic".md
+                    display_notes
                     break;;
                 "Quit" )
                     exit;;
