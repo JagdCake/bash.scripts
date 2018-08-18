@@ -24,7 +24,7 @@ notes=~/Documents/text_files/notes/
 
 # app for editing notes
 app_edit() {
-    nvim +"normal Gkka " "$1"
+    nvim +"normal Gkkka " "$1"
 }
 
 # app for reading notes
@@ -43,15 +43,15 @@ generate_format() {
     # sanitize the title variable
     read -p "Enter a title: " title
 
-    echo "Title: "$title"" >> "$notes"/"$topic"
-    echo "$(date)" >> "$notes"/"$topic"
-    echo "- " >> "$notes"/"$topic"
-    echo -e "Source:\n" >> "$notes"/"$topic"
+    echo "## "$title"" >> "$notes"/"$topic".md
+    echo -e "*$(date)*\n" >> "$notes"/"$topic".md
+    echo -e "- \n" >> "$notes"/"$topic".md
+    echo -e "Source: <link here>\n" >> "$notes"/"$topic".md
 }
 
 add_notes() {
     generate_format
-    app_edit "$notes"/"$topic"
+    app_edit "$notes"/"$topic".md
 }
 
 add_topic() {
@@ -66,12 +66,12 @@ add_topic() {
     topic=$(echo "$topic" | sed 's/^[ \t]*//;s/[ \t]*$//')
 
     # 'touch' doesn't overwrite already existing files
-    touch "$notes"/"$topic"
+    touch "$notes"/"$topic".md
 }
 
 select_topic() {
     # use fuzzy search to select a topic
-    topic="$(ls "$notes" | fzf)"
+    topic="$(ls "$notes" | awk -F'.md' '{ print $1 }' | fzf)"
 }
 
 select_menu() {
@@ -95,7 +95,7 @@ select_menu() {
                     break;;
                 "Show notes" )
                     select_topic &&
-                    app_open "$notes"/"$topic"
+                    app_open "$notes"/"$topic".md
                     break;;
                 "Quit" )
                     exit;;
