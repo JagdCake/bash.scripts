@@ -86,7 +86,9 @@ add_topic() {
 
 select_topic() {
     # use fuzzy search to select a topic
-    topic="$(ls "$notes" | awk -F'.md' '{ print $1 }' | fzf)"
+    topic="$(ls -p "$notes" | grep -v / | awk -F'.md' '{ print $1 }' | fzf)"
+}
+
 display_notes() {
     echo "Display notes in:"
     select mode in "Raw markdown" "PDF file converted from md" "Cancel"; do
