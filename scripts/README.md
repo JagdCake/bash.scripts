@@ -89,7 +89,7 @@
 </ul>
 
 <h1>take_notes.sh</h1>
-<p>Dependencies: fzf, neovim(optional)</p>
+<p>Dependencies: fzf, neovim(optional), calibre</p>
 
 <ul>
   <li>Choose between adding a new topic / notes on a topic or displaying all notes on a topic</li>
