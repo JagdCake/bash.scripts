@@ -95,7 +95,7 @@
   <li>Choose between adding a new topic / notes on a topic or displaying all notes on a topic</li>
   <li>If adding a new topic, choose a name and enter a title for the first set of notes</li>
   <li>If adding notes, select a topic from all the added ones and enter a title</li>
-  <li>The script will generate formatted lines of text for the title, date, first note and the source</li>
+  <li>The script will generate markdown-formatted lines of text for the title, date, first note and the source</li>
   <li>The script will then open the notes file in your favorite text editor (default is 'neovim')</li>
-  <li>If displaying notes, the script will open the file in the chosen program (default is 'less')</li>
+  <li>If displaying notes, you can decide to either open the markdown (MD) file in the chosen program (default is the 'less' command) or have the MD converted to a PDF file and then displayed in a PDF file viewer (default is a manually installed version of 'Firefox Developer Edition')</li>
 </ul>
