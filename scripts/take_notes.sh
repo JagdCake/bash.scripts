@@ -115,7 +115,7 @@ display_notes() {
                 create_pdf
                 break;;
             "Cancel" )
-                exit;;
+                return;;
         esac
     done
 }
