@@ -113,6 +113,8 @@ create_pdf() {
     if [[ -f "$pdf_file" && ! "$md_file" -nt "$pdf_file" ]]; then
         app_open_pdf "$pdf_file"
     else
+        # TODO Enhancement:
+        # show conversion progress
         ebook-convert "$md_file" "$pdf_file" $(echo "$convert_options") > /dev/null 2>&1
         app_open_pdf "$pdf_file"
         rm "$notes"/*.html
