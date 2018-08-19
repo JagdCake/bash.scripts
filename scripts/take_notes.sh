@@ -30,8 +30,12 @@ line_height='150' # percentage of the font size, default is '120', for double sp
 convert_options="--minimum-line-height "$line_height" --pdf-default-font-size "$font_size" --pdf-hyphenate --pdf-page-numbers --pdf-standard-font "$font""
 
 # app for editing notes
-app_edit() {
+app_add() {
     nvim +"normal Gkkka " "$1"
+}
+
+app_edit() {
+    nvim +"$1" +"normal jjjw" "$2"
 }
 
 # app for opening .md notes
@@ -63,7 +67,7 @@ generate_format() {
 
 add_notes() {
     generate_format
-    app_edit "$notes"/"$topic".md
+    app_add "$notes"/"$topic".md
 }
 
 # TODO Enhancement:
