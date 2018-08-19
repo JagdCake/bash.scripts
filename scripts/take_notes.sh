@@ -70,9 +70,6 @@ add_notes() {
     app_add "$notes"/"$topic".md
 }
 
-# TODO Enhancement:
-# add a function for note editing, use grep to find the line number of a title (?) selected with fzf
-
 add_topic() {
     read -p 'Enter a topic name: ' topic
 
