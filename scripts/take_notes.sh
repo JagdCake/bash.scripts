@@ -51,10 +51,9 @@ if [ ! -d "$notes" ]; then
 fi
 
 generate_format() {
-    # TODO Enhancement:
-    # sanitize the title variable
-    # use ' sed -e "s/’/'/" ' to replace the weird single quotes
     read -p "Enter a title: " title
+
+    title=$(echo "$title" | sed -e "s/’/'/" | sed 's/^[ \t]*//;s/[ \t]*$//')
 
     echo "## "$title"" >> "$notes"/"$topic".md
     echo -e "*$(date)*\n" >> "$notes"/"$topic".md
