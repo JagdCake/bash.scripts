@@ -113,9 +113,8 @@ create_pdf() {
     if [[ -f "$pdf_file" && ! "$md_file" -nt "$pdf_file" ]]; then
         app_open_pdf "$pdf_file"
     else
-        # TODO Enhancement:
-        # show conversion progress
-        ebook-convert "$md_file" "$pdf_file" $(echo "$convert_options") > /dev/null 2>&1
+        echo -e "\e[48;5;231m \e[38;5;25mConversion in progress... \e[0m\e[0m"
+        ebook-convert "$md_file" "$pdf_file" $(echo "$convert_options") 2>/dev/null | grep -o '[0-9]\+%'
         app_open_pdf "$pdf_file"
         rm "$notes"/*.html
     fi
