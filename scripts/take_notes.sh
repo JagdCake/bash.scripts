@@ -93,6 +93,20 @@ select_topic() {
     topic="$(ls -p "$notes" | grep -v / | awk -F'.md' '{ print $1 }' | fzf)"
 }
 
+edit_notes() {
+    number_of_lines=$(cat "$notes"/"$topic".md | wc -l)
+
+    if [ "$number_of_lines" -ge 7 ]; then
+        note_title=$(cat "$notes"/"$topic".md | grep '##' | awk -F'##' '{ print $2 }' | awk '{$1=$1};1' | fzf)
+        if [ $? -eq 0 ]; then
+            line=$(grep -n "$note_title" "$notes"/"$topic".md | awk -F':' '{ print $1 }')
+            app_edit "$line" "$notes"/"$topic".md
+        fi
+    else
+        echo -e "\n\e[48;5;202m \e[38;5;231mFile is either empty or not formatted properly! \e[0m\e[0m\n"
+    fi
+}
+
 create_pdf() {
     pdf_file=""$notes"/pdf_notes/"$topic".pdf"
     md_file=""$notes"/"$topic".md"
@@ -132,7 +146,7 @@ select_menu() {
         add_notes
         select_menu
     else
-        select choice in "Add new topic" "Add notes" "Show notes" "Quit"; do
+        select choice in "Add new topic" "Add notes" "Edit notes" "Show notes" "Quit"; do
             case "$choice" in
                 "Add new topic" )
                     add_topic &&
@@ -141,6 +155,10 @@ select_menu() {
                 "Add notes" )
                     select_topic &&
                     add_notes
+                    break;;
+                "Edit notes" )
+                    select_topic &&
+                    edit_notes
                     break;;
                 "Show notes" )
                     select_topic &&
