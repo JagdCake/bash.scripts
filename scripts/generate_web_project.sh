@@ -50,7 +50,7 @@ option_3_message=""
 #!!! Options for option 1 - 'Node App', only !!!
 package_manager='yarn'
 verb='add'
-packages_to_install=('express' 'ejs' 'pg-promise' 'body-parser')
+packages_to_install=('express' 'express-session' 'ejs' 'pg' 'pg-hstore' 'sequelize' 'connect-flash-plus' 'express-rate-limit' 'helmet' 'validator' 'body-parser')
 ### ###
 
 name_the_project() {
