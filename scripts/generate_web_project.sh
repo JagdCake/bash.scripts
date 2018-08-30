@@ -30,8 +30,8 @@
 project_type_options=("Node App" "Static site" "WordPress site")
 # paths to template files
 option_1_files_dir=~/Documents/web_dev/1_templates/node_app/
-option_2_files_dir=~/Documents/web_dev/1_templated/static_site/
-option_3_files_dir=~/Documents/web_dev/1_templated/wordpress_site/
+option_2_files_dir=~/Documents/web_dev/1_templates/static_site/
+option_3_files_dir=~/Documents/web_dev/1_templates/wordpress_site/
 # use full paths
 option_1_hidden_files=("/home/jagdcake/Documents/web_dev/1_templates/node_app/.eslintrc.json")
 option_2_hidden_files=()
