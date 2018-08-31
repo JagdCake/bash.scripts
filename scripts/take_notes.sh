@@ -58,7 +58,7 @@ fi
 generate_format() {
     read -p "Enter a title: " title
 
-    title=$(echo "$title" | sed -e "s/’/'/" | sed 's/^[ \t]*//;s/[ \t]*$//')
+    title=$(echo "$title" | sed -e "s/’/'/" -e "s/“/\"/" -e "s/”/\"/" | sed 's/^[ \t]*//;s/[ \t]*$//')
 
     echo "## "$title"" >> "$notes"/"$topic".md
     echo -e "*$(date)*\n" >> "$notes"/"$topic".md
