@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# TODO Enhancement:
+# extract the colors and color resets into their own variables to clean up the echo messages
+
 ### Description ###
 # Choose between adding a new topic / notes on a topic, editing notes or displaying all notes on a topic
 # If adding a new topic, choose a name and enter a title for the first set of notes
