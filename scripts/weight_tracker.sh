@@ -40,9 +40,13 @@ show_weight_change_since() {
     if [ "$1" == 'start' ]; then
         start_weight=$(head -n 3 "$log" | tail -n 1 | awk '{ print $2 }')
         point_in_time=$(head -n 2 "$log" | tail -n 1 | awk -F':' '{ print $2 }' | awk '{$1=$1};1')
+
+        echo -e "\nYou weighed $start_weight kg / $(echo "scale=1; $start_weight / $lb" | bc -l) lb, on "$point_in_time"."
     elif [ "$1" == 'week' ]; then
         start_weight=$(tail -n 8 "$log" | head -n 3 | tail -n 1 | awk '{ print $2 }')
         point_in_time='last week'
+
+        echo -e "\nYou weighed $start_weight kg / $(echo "scale=1; $start_weight / $lb" | bc -l) lb, "$point_in_time"."
     fi
 
     current_weight=$(tail -n 2 "$log" | head -n 1 | awk '{ print $2 }')
@@ -52,13 +56,13 @@ show_weight_change_since() {
         # this part = "$(echo "scale=1; $kg_difference / $lb" | bc -l)" converts the kg value into a floating-point lb value with the help of 'bc -l' ('bc' allows float division and the '-l' flag prints the result as a float too, while 'scale=1' limits the lb value to the first digit after the decimal point)
 
     if [ $(echo "$start_weight > $current_weight" | bc) -eq 1 ]; then
-        echo "You have lost: $kg_difference kg / $lb_difference lb, since "$point_in_time""
+        echo "You have lost $kg_difference kg / $lb_difference lb, since then."
     elif [ $(echo "$start_weight < $current_weight" | bc) -eq 1 ]; then
         kg_positive=$(echo "scale=1; $kg_difference * -1" | bc)
         lb_positive=$(echo "scale=1; $lb_difference * -1" | bc)
-        echo "You have gained: $kg_positive kg / $lb_positive lb, since "$point_in_time""
+        echo "You have gained $kg_positive kg / $lb_positive lb, since then."
     else
-        echo "Your weight is the same as "$point_in_time": $start_weight kg / $(echo "scale=1; $start_weight / $lb" | bc -l) lb"
+        echo "Your weight is the same: $start_weight kg / $(echo "scale=1; $start_weight / $lb" | bc -l) lb."
     fi
 }
 
