@@ -54,7 +54,7 @@ close_apps() {
 # Write to log
 # ===================
 # if the log file doesn't exist, create it
-if [ -e "$log" ]; then
+if [ ! -e "$log" ]; then
     touch "$log"
 fi
 
