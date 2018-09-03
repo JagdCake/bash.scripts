@@ -113,5 +113,7 @@ if [[ $day -eq $today && "$last_date" != "$date" ]]; then
 else
     show_weight_change_since 'start'
     show_weight_change_since 'week'
+
+    echo -e "\nNow, you weigh $current_weight kg / $(echo "scale=1; $current_weight / $lb" | bc -l) lb."
 fi
 
