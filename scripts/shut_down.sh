@@ -47,7 +47,11 @@ log=~/Documents/text_files/my_logs/shutdown_log
 close_apps() {
     # using SIGTERM to allow programs to exit cleanly
     # "@" calls the array items as separate strings
-    kill -s SIGTERM `pidof "${apps[@]}"` && echo "Closing "${app_names[@]}""
+    kill -s SIGTERM `pidof "${apps[@]}"` 2>/dev/null
+
+    if [ $? -eq 0 ]; then
+        echo "Closing "${app_names[@]}""
+    fi
 }
 
 # ===================
