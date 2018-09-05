@@ -90,7 +90,7 @@ init_git_and_message() {
 		done
 	fi
 
-	git add . && git commit -am "Initial commit"
+	git add . && git commit -am "Initial commit" && git branch -m master development
 
 	if [ ! -z "$2" ]; then
 		message="$2"
