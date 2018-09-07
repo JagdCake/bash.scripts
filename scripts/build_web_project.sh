@@ -33,6 +33,20 @@ minify_single_static() {
     fi
 }
 
+minify_all_static() {
+    html-minifier --input-dir ./ --output-dir public/ --file-ext html --case-sensitive --collapse-whitespace --remove-comments --minify-css &&
+
+    html-minifier ./public/404.html -o ./public/ --case-sensitive --collapse-whitespace --remove-comments --minify-css &&
+
+    cp -r js/ images/ public/ &&
+
+    terser public/js/all.js -o public/js/min.all.js --compress --mangle &&
+
+    svgo -f public/images/ &&
+
+    optipng -o5 public/images/*.png
+}
+
 build_for_firebase() {
     type="$1"
 
