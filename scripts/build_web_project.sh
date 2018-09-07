@@ -14,4 +14,13 @@ choose_project() {
     fi
 }
 
+choose_file() {
+    read -e -p "Enter path to file: " file
+
+    if [ ! -f "$file" ]; then
+        echo "File doesn't exist!"
+        choose_file
+    fi
+}
+
 
