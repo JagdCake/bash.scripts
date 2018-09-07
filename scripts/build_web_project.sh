@@ -6,9 +6,10 @@
 # choose between building from scratch (run all functions) and building piece by piece (select function to run)
 
 choose_project() {
-    read -e -p "Enter project directory: " project_dir
+    # can't expand tilde (~), use only full or relative paths
+    read -e -p "Enter project / file location: " project
 
-    if [ ! -d "$project_dir" ]; then
+    if [ ! -d "$project" ]; then
         echo "Directory doesn't exist!"
         choose_project
     fi
