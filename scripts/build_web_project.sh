@@ -33,21 +33,20 @@ minify_single_static() {
     fi
 }
 
-minify_type() {
+build_for_firebase() {
     type="$1"
 
     choose_project
 
     cd "$project"
 
-    echo 'Choose file to minify'
-    file=$(ls . | fzf)
+    if [ "$type" == 'single' ]; then
+        echo 'Choose file to minify'
+        file=$(ls . | fzf)
 
-    if [ "$type" == 'static' ]; then
-        minify_static
-    elif [ "$type" == 'dynamic' ]; then
-        git checkout production &&
-        html-minifier "$file" -o views/"$file" --case-sensitive --collapse-whitespace --remove-comments --minify-css
+        minify_single_static
+    elif [ "$type" == 'all' ]; then
+        minify_all_static
     fi
 }
 
