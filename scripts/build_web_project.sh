@@ -15,7 +15,7 @@ choose_project() {
     fi
 }
 
-minify_static() {
+minify_single_static() {
     file_extension=$(echo "$file" | awk -F . '{if (NF>1) {print $NF}}')
 
     if [[ "$file_extension" == 'html' || "$file_extension" == 'ejs' ]]; then
@@ -33,7 +33,7 @@ minify_static() {
     fi
 }
 
-minify_single_file() {
+minify_type() {
     type="$1"
 
     choose_project
