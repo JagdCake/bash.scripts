@@ -60,7 +60,14 @@ build_for_firebase() {
 
         minify_single_static
     elif [ "$type" == 'all' ]; then
+        firebase init &&
         minify_all_static
+        git branch production &&
+        git checkout production
+        git add .
+        git commit -m "Deploy to firebase"
+
+        echo 'Link to js/min.all.js instead of js/all.js'
     fi
 }
 
