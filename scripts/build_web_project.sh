@@ -14,12 +14,24 @@ choose_project() {
     fi
 }
 
-choose_file() {
-    read -e -p "Enter path to file: " file
+minify_single_html_inline_css() {
+    type="$1"
 
-    if [ ! -f "$file" ]; then
-        echo "File doesn't exist!"
-        choose_file
+    choose_project
+
+    cd "$project_dir"
+
+    echo 'Choose file to minify'
+    file=$(ls . | fzf)
+
+    if [ "$type" == 'static' ]; then
+        html-minifier "$file" -o public/"$file" --case-sensitive --collapse-whitespace --remove-comments --minify-css
+    elif [ "$type" == 'dynamic' ]; then
+        git checkout production &&
+        html-minifier "$file" -o views/"$file" --case-sensitive --collapse-whitespace --remove-comments --minify-css
+    fi
+}
+
     fi
 }
 
