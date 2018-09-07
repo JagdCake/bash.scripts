@@ -18,7 +18,7 @@ choose_project() {
 minify_single_static() {
     file_extension=$(echo "$file" | awk -F . '{if (NF>1) {print $NF}}')
 
-    if [[ "$file_extension" == 'html' || "$file_extension" == 'ejs' ]]; then
+    if [[ "$file_extension" == 'html' ]]; then
         html-minifier "$file" -o public/"$file" --case-sensitive --collapse-whitespace --remove-comments --minify-css
     elif [[ "$file_extension" == 'js' ]]; then
         terser "$file" -o ../public/js/min."$file" --compress --mangle
