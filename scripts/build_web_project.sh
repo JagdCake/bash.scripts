@@ -15,7 +15,6 @@ choose_project() {
     fi
 }
 
-minify_single_html_inline_css() {
 minify_static() {
     file_extension=$(echo "$file" | awk -F . '{if (NF>1) {print $NF}}')
 
@@ -34,17 +33,18 @@ minify_static() {
     fi
 }
 
+minify_single_file() {
     type="$1"
 
     choose_project
 
-    cd "$project_dir"
+    cd "$project"
 
     echo 'Choose file to minify'
     file=$(ls . | fzf)
 
     if [ "$type" == 'static' ]; then
-        html-minifier "$file" -o public/"$file" --case-sensitive --collapse-whitespace --remove-comments --minify-css
+        minify_static
     elif [ "$type" == 'dynamic' ]; then
         git checkout production &&
         html-minifier "$file" -o views/"$file" --case-sensitive --collapse-whitespace --remove-comments --minify-css
