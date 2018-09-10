@@ -121,3 +121,22 @@ choose_how_many_files() {
     choose_how_many_files
 }
 
+main_menu() {
+    select option in "Build static website" "Build dynamic website" "Quit"; do
+        case "$option" in
+            "Build static website" )
+                choose_how_many_files
+                exit;;
+            "Build dynamic website" )
+                build_for_vps
+                break;;
+            "Quit" )
+                exit;;
+        esac
+    done
+
+    main_menu
+}
+
+main_menu
+
