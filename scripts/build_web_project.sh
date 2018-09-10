@@ -60,10 +60,11 @@ build_for_firebase() {
 
         minify_single_static
     elif [ "$what" == 'all' ]; then
-        firebase init &&
-        minify_all_static
         git branch production 2>/dev/null
         git checkout production
+        firebase init &&
+        minify_all_static
+
         git add .
         git commit -m "Deploy to firebase"
 
