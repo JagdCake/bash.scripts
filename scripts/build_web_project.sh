@@ -48,18 +48,18 @@ minify_all_static() {
 }
 
 build_for_firebase() {
-    type="$1"
+    what="$1"
 
     choose_project
 
     cd "$project"
 
-    if [ "$type" == 'single' ]; then
+    if [ "$what" == 'single' ]; then
         echo 'Choose file to minify'
         file=$(ls . | fzf)
 
         minify_single_static
-    elif [ "$type" == 'all' ]; then
+    elif [ "$what" == 'all' ]; then
         firebase init &&
         minify_all_static
         git branch production 2>/dev/null
