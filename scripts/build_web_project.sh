@@ -88,4 +88,18 @@ minify_all_dynamic() {
     fi
 }
 
+build_for_vps() {
+    choose_project
+
+    cd "$project"
+
+    echo 'Choose file type to minify'
+    file=$(ls . | fzf)
+
+    git branch production 2>/dev/null
+    git checkout production
+    minify_all_dynamic
+
+    echo "Don't forget to commit"
+}
 
