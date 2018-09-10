@@ -62,7 +62,7 @@ build_for_firebase() {
     elif [ "$type" == 'all' ]; then
         firebase init &&
         minify_all_static
-        git branch production &&
+        git branch production 2>/dev/null
         git checkout production
         git add .
         git commit -m "Deploy to firebase"
