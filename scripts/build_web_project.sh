@@ -1,9 +1,14 @@
 #!/bin/bash
 
-# create a different function for every part of the build process (minify CSS, optimize images, etc.)
-    # one function for static and dynamic sites
-# select between project types (static_firebase, dynamic_node, dynamic_wordpress)
-# choose between building from scratch (run all functions) and building piece by piece (select function to run)
+### Description ###
+# Choose between minifying / optimizing static or dynamic website assets
+# For static - you can choose between minifying / optimizing a single file or all files in a directory
+    # Selecting all files assumes build process for deployment to 'Google Firebase' and the script...
+        # creates production branch
+        # initializes new firebase project
+        # commits all files
+# For dynamic - the script creates a production branch and minifies / optimizes all files by file type
+### ###
 
 choose_project() {
     # can't expand tilde (~), use only full or relative paths
