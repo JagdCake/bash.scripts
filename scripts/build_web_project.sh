@@ -75,7 +75,7 @@ minify_all_dynamic() {
     file_extension=$(echo "$file" | awk -F . '{if (NF>1) {print $NF}}')
 
     if [[ "$file_extension" == 'ejs' ]]; then
-        html-minifier --input-dir views/ --output-dir views/ --case-sensitive --collapse-whitespace --remove-comments --minify-css
+        html-minifier --input-dir ./ --output-dir ./ --case-sensitive --collapse-whitespace --remove-comments --minify-css
     elif [[ "$file_extension" == 'js' ]]; then
         terser "$file" -o min."$file" --compress --mangle
     elif [[ "$file_extension" == 'svg' ]]; then
