@@ -54,7 +54,7 @@ build_for_firebase() {
 
     cd "$project"
 
-    if [ "$what" == 'single' ]; then
+    if [ "$what" == 'one' ]; then
         echo 'Choose file to minify'
         file=$(ls . | fzf)
 
