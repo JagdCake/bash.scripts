@@ -103,3 +103,21 @@ build_for_vps() {
     echo "Don't forget to commit"
 }
 
+choose_how_many_files() {
+    echo "Choose how many files to minify / optimize:"
+    select choice in "One file" "All files" "Cancel"; do
+        case "$choice" in
+            "One file" )
+                build_for_firebase one
+                break;;
+            "All files" )
+                build_for_firebase all
+                exit;;
+            "Cancel" )
+                exit;;
+        esac
+    done
+
+    choose_how_many_files
+}
+
