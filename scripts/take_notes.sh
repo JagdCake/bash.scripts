@@ -45,7 +45,8 @@ app_edit() {
 
 # app for opening .md notes
 app_open_md() {
-    less "$1"
+    export BAT_PAGER='less'
+    bat --paging always "$1" 2>/dev/null || less "$1"
 }
 
 # app for opening .pdf notes
