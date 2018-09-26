@@ -101,3 +101,20 @@
 <li>If editing notes, select the title of a set of notes and open in text editor (default is 'neovim')</li>
   <li>If displaying notes, you can decide to either open the markdown (MD) file in the chosen program (default is the 'less' command) or have the MD converted to a PDF file and then displayed in a PDF file viewer (default is a manually installed version of 'Firefox Developer Edition')</li>
 </ul>
+
+<h1>build_web_project.sh</h1>
+<p>Dependencies: git html-minifier terser svgo optipng fzf</p>
+
+<ul>
+  <li>Choose between minifying / optimizing static or dynamic website assets</li>
+  <li>For static - you can choose between minifying / optimizing a single file or all files in a directory</li>
+  <ul>
+    <li>Selecting all files assumes build process for deployment to 'Google Firebase' and the script…</li>
+        <ul>
+          <li>creates production branch</li>
+          <li>initializes new firebase project</li>
+          <li>commits all files</li>
+        </ul>
+    </ul>
+<li>For dynamic - the script creates a production branch and minifies / optimizes all files by file type</li>
+</ul>
