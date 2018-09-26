@@ -55,6 +55,15 @@ app_open_pdf() {
 }
 ### ###
 
+dependency_check() {
+    if [ ! $(which fzf 2>/dev/null) ]; then
+        echo "Dependency: \"fzf\" is not installed."
+        exit
+    elif [ ! $(which calibre 2>/dev/null) ]; then
+        echo -e "Dependency: \"calibre\" is not installed.\nYou won't be able to convert notes to PDF.\n"
+    fi
+}
+
 # create the notes folder if it doesn't already exist
 if [ ! -d "$notes" ]; then
     mkdir -p "$notes"
@@ -177,5 +186,6 @@ select_menu() {
     fi
 }
 
+dependency_check
 select_menu
 

@@ -53,6 +53,13 @@ verb='add'
 packages_to_install=('express' 'express-session' 'ejs' 'pg' 'pg-hstore' 'sequelize' 'connect-flash-plus' 'express-rate-limit' 'helmet' 'validator' 'body-parser')
 ### ###
 
+dependency_check() {
+    if [ ! $(which git 2>/dev/null) ]; then
+        echo "Dependency: \"git\" is not installed."
+        exit
+    fi
+}
+
 name_the_project() {
 	read -p "Enter project name: " project_name
 
@@ -117,6 +124,8 @@ generate_project() {
 		init_git_and_message option_3_ignore "$option_3_message"
 	fi
 }
+
+dependency_check
 
 select project in "${project_type_options[@]}" "Cancel"; do
 	case "$project" in

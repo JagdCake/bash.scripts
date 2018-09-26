@@ -40,6 +40,15 @@ start_message='Start!'
 stop_message='Stop!'
 ### ###
 
+dependency_check() {
+    if [ ! $(which speech-dispatcher 2>/dev/null) ]; then
+        echo "Dependency: \"speech-dispatcher\" is not installed."
+        exit
+    fi
+}
+
+dependency_check
+
 # Source: https://stackoverflow.com/questions/38868665/multiplying-strings-in-bash-script/38868864#38868864
 multiply_string() {
     string="$1"

@@ -59,6 +59,13 @@ workspace_5_bg='/home/jagdcake/Pictures/cubes_gray.png'
 app_to_search_for='terminator'
 ### ###
 
+dependency_check() {
+    if [ ! $(which xdotool 2>/dev/null) ]; then
+        echo "Dependency: \"xdotool\" is not installed."
+        exit
+    fi
+}
+
 workspace_is_active() {
     # Source: https://stackoverflow.com/a/27074039/8980616
     xdotool search --onlyvisible --desktop $1 --class "$app_to_search_for" getwindowname %@ > /dev/null
@@ -127,5 +134,6 @@ switch_workspace() {
     switch_background
 }
 
+dependency_check
 switch_workspace
 
