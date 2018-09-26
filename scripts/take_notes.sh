@@ -36,11 +36,11 @@ convert_options="--minimum-line-height "$line_height" --pdf-default-font-size "$
 
 # app for editing notes
 app_add() {
-    nvim +"normal Gkkka " "$1"
+    nvim +"normal Gkkka " "$1" 2>/dev/null || gedit "$1"
 }
 
 app_edit() {
-    nvim +"$1" +"normal jjjw" "$2"
+    nvim +"$1" +"normal jjjw" "$2" 2>/dev/null || gedit "$2"
 }
 
 # app for opening .md notes
@@ -51,7 +51,7 @@ app_open_md() {
 
 # app for opening .pdf notes
 app_open_pdf() {
-    ~/firefox/./firefox "$1"
+    ~/firefox/./firefox "$1" 2>/dev/null || xdg-open "$1"
 }
 ### ###
 
