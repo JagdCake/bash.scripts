@@ -10,6 +10,15 @@
 # For dynamic - the script creates a production branch and minifies / optimizes all files by file type
 ### ###
 
+### Usage ###
+# You can just create an alias for the script in '.bashrc' and run it from a terminal
+    # alias buildwebproject='/path/to/./build_web_project.sh'
+    # $ buildwebproject
+# You can create a symbolic link to the script from your home directory
+    # ~$ ln -s /path/to/build_web_project.sh
+    # ~$ ./build_web_project.sh
+### ###
+
 dependency_check() {
     dependencies=(git html-minifier terser svgo optipng)
 
