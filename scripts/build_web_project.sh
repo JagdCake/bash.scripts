@@ -10,6 +10,21 @@
 # For dynamic - the script creates a production branch and minifies / optimizes all files by file type
 ### ###
 
+dependency_check() {
+    dependencies=(git html-minifier terser svgo optipng)
+
+    for dependency in "${dependencies[@]}"; do
+        if [ ! $(which "$dependency" 2>/dev/null) ]; then
+            echo -e "Dependency: \""$dependency"\" is not installed."
+            dependency=false
+        fi
+    done
+
+    if [ "$dependency" = false ]; then
+        exit
+    fi
+}
+
 choose_project() {
     # can't expand tilde (~), use only full or relative paths
     read -e -p "Enter project / file location: " project
@@ -144,5 +159,6 @@ main_menu() {
     main_menu
 }
 
+dependency_check
 main_menu
 
