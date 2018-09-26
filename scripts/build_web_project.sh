@@ -20,7 +20,7 @@
 ### ###
 
 dependency_check() {
-    dependencies=(git html-minifier terser svgo optipng)
+    dependencies=(git html-minifier terser svgo optipng fzf)
 
     for dependency in "${dependencies[@]}"; do
         if [ ! $(which "$dependency" 2>/dev/null) ]; then
