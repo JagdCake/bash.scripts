@@ -103,7 +103,7 @@
 </ul>
 
 <h1>build_web_project.sh</h1>
-<p>Dependencies: git html-minifier terser svgo optipng fzf</p>
+<p>Dependencies: git, html-minifier, terser, svgo, optipng, fzf</p>
 
 <ul>
   <li>Choose between minifying / optimizing static or dynamic website assets</li>
