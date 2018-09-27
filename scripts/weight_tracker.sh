@@ -108,12 +108,18 @@ weight_prompt() {
 today=$(date +%u)
 last_date=$(tail -n 3 "$log" | head -n 1 | awk -F':' '{ print $2 }' | awk '{$1=$1};1')
 
+missed_the_day="$1"
+
 if [[ $day -eq $today && "$last_date" != "$date" ]]; then
+    weight_prompt
+elif [[ "$missed_the_day" == 'missed' && "$last_date" != "$date" ]]; then
     weight_prompt
 else
     show_weight_change_since 'start'
     show_weight_change_since 'week'
 
     echo -e "\nNow, you weigh $current_weight kg / $(echo "scale=1; $current_weight / $lb" | bc -l) lb."
+    echo ==================================
+    echo -e "\nNote: If you've missed this week's weight-tracking day, run the script again with 'missed' as the first argument."
 fi
 
