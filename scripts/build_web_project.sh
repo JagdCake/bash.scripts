@@ -49,6 +49,7 @@ minify_single_static() {
 
     if [[ "$file_extension" == 'html' ]]; then
         html-minifier "$file" -o public/"$file" --case-sensitive --collapse-whitespace --remove-comments --minify-css
+        sed -i 's/src="js\/all.js"/src="js\/min.all.js"/g' public/"$file"
     elif [[ "$file_extension" == 'js' ]]; then
         terser "$file" -o ../public/js/min."$file" --compress --mangle
         cp "$file" ../public/js/
@@ -70,6 +71,8 @@ minify_all_static() {
     cp -r js/ images/ public/ &&
 
     terser public/js/all.js -o public/js/min.all.js --compress --mangle &&
+
+    sed -i 's/src="js\/all.js"/src="js\/min.all.js"/g' public/index.html &&
 
     svgo -f public/images/ &&
 
@@ -96,8 +99,6 @@ build_for_firebase() {
 
         git add .
         git commit -m "Deploy to firebase"
-
-        echo 'Link to js/min.all.js instead of js/all.js'
     fi
 }
 
@@ -108,6 +109,7 @@ minify_all_dynamic() {
         html-minifier --input-dir ./ --output-dir ./ --case-sensitive --collapse-whitespace --remove-comments --minify-css
     elif [[ "$file_extension" == 'js' ]]; then
         terser "$file" -o min."$file" --compress --mangle
+        sed -i 's/src="js\/all.js"/src="js\/min.all.js"/g' ../../views/partials/footer.ejs
     elif [[ "$file_extension" == 'svg' ]]; then
         svgo -f .
     elif [[ "$file_extension" == 'png' ]]; then
