@@ -37,13 +37,12 @@ dependency_check() {
     fi
 }
 
-choose_project() {
-    # can't expand tilde (~), use only full or relative paths
-    read -e -p "Enter project / file location: " project
-
-    if [ ! -d "$project" ]; then
-        echo "Directory doesn't exist!"
-        choose_project
+minify_html() {
+    # check if the input is a file or a directory
+    if [[ -f "$input" ]]; then
+        html-minifier "$input" -o "$output_dir"/"$input" --case-sensitive --collapse-whitespace --remove-comments --minify-css
+    elif [[ -d "$input" ]]; then
+        html-minifier --input-dir "$input" --output-dir "$output_dir"/ --file-ext "$file_extension" --case-sensitive --collapse-whitespace --remove-comments --minify-css
     fi
 }
 
