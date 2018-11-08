@@ -54,42 +54,11 @@ minify_js() {
     fi
 }
 
-minify_all_static() {
-    html-minifier --input-dir ./ --output-dir public/ --file-ext html --case-sensitive --collapse-whitespace --remove-comments --minify-css &&
-
-    html-minifier ./public/404.html -o ./public/ --case-sensitive --collapse-whitespace --remove-comments --minify-css &&
-
-    cp -r js/ images/ public/ &&
-
-    terser public/js/all.js -o public/js/min.all.js --compress --mangle &&
-
-    sed -i 's/src="js\/all.js"/src="js\/min.all.js"/g' public/index.html &&
-
-    svgo -f public/images/ &&
-
-    optipng -o5 public/images/*.png
-}
-
-build_for_firebase() {
-    what="$1"
-
-    choose_project
-
-    cd "$project"
-
-    if [ "$what" == 'one' ]; then
-        echo 'Choose file to minify'
-        file=$(ls . | fzf)
-
-        minify_single_static
-    elif [ "$what" == 'all' ]; then
-        git branch production 2>/dev/null
-        git checkout production
-        firebase init &&
-        minify_all_static
-
-        git add .
-        git commit -m "Deploy to firebase"
+minify_svg() {
+    if [ -f "$input" ]; then
+        svgo -i "$input" -o "$output_dir"/
+    elif [ -d "$input" ]; then
+        svgo -f "$input" -o "$output_dir"/
     fi
 }
 
