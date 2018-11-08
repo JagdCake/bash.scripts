@@ -46,22 +46,11 @@ minify_html() {
     fi
 }
 
-minify_single_static() {
-    file_extension=$(echo "$file" | awk -F . '{if (NF>1) {print $NF}}')
-
-    if [[ "$file_extension" == 'html' ]]; then
-        html-minifier "$file" -o public/"$file" --case-sensitive --collapse-whitespace --remove-comments --minify-css
-        sed -i 's/src="js\/all.js"/src="js\/min.all.js"/g' public/"$file"
-    elif [[ "$file_extension" == 'js' ]]; then
-        terser "$file" -o ../public/js/min."$file" --compress --mangle
-        cp "$file" ../public/js/
-    elif [[ "$file_extension" == 'svg' ]]; then
-        svgo -i "$file" -o ../public/images/
-    elif [[ "$file_extension" == 'png' ]]; then
-        optipng -o5 "$file" -out ../public/images/"$file"
-    else
-        echo "Unsupported file format"
-        exit
+minify_js() {
+    if [ -f "$input" ]; then
+        terser "$input" -o "$output_dir"/min."$input" --compress --mangle
+    elif [ -d "$input" ]; then
+        terser "$input" -o "$output_dir" --compress --mangle
     fi
 }
 
