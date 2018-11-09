@@ -75,15 +75,15 @@ optimize_png() {
     fi
 }
 
-    if [[ "$file_extension" == 'ejs' ]]; then
-        html-minifier --input-dir ./ --output-dir ./ --case-sensitive --collapse-whitespace --remove-comments --minify-css
-    elif [[ "$file_extension" == 'js' ]]; then
-        terser "$file" -o min."$file" --compress --mangle
-        sed -i 's/src="js\/all.js"/src="js\/min.all.js"/g' ../../views/partials/footer.ejs
-    elif [[ "$file_extension" == 'svg' ]]; then
-        svgo -f .
-    elif [[ "$file_extension" == 'png' ]]; then
-        optipng -o5 ./*.png
+minify_optimize() {
+    if [[ "$filetype" = 'html' || "$filetype" = 'ejs' ]]; then
+        minify_html
+    elif [[ "$filetype" = 'js' ]]; then
+        minify_js
+    elif [[ "$filetype" = 'svg' ]]; then
+        optimize_svg
+    elif [[ "$filetype" = 'png' ]]; then
+        optimize_png
     else
         echo "Unsupported file format"
         exit
