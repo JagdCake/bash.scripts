@@ -105,39 +105,12 @@ build_for_vps() {
     echo "Don't forget to commit"
 }
 
-choose_how_many_files() {
-    echo "Choose how many files to minify / optimize:"
-    select choice in "One file" "All files" "Cancel"; do
-        case "$choice" in
-            "One file" )
-                build_for_firebase one
-                break;;
-            "All files" )
-                build_for_firebase all
-                exit;;
-            "Cancel" )
-                exit;;
-        esac
-    done
-
-    choose_how_many_files
-}
-
-main_menu() {
-    select option in "Build static website" "Build dynamic website" "Quit"; do
-        case "$option" in
-            "Build static website" )
-                choose_how_many_files
-                exit;;
-            "Build dynamic website" )
-                build_for_vps
-                break;;
-            "Quit" )
-                exit;;
-        esac
-    done
-
-    main_menu
+usage() {
+  printf "Usage:\n"
+  printf "  ./build_web_project.sh [FILETYPE] [INPUT FILE/DIR] [OUTPUT DIR]\n\n"
+  printf "Supported filetypes:\n"
+  printf "  HTML, EJS, JS, SVG, PNG\n\n"
+  printf "\n"
 }
 
 dependency_check
