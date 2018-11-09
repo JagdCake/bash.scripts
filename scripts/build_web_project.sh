@@ -59,7 +59,7 @@ minify_js() {
     fi
 }
 
-minify_svg() {
+optimize_svg() {
     if [ -f "$input" ]; then
         svgo -i "$input" -o "$output_dir"/
     elif [ -d "$input" ]; then
