@@ -1,22 +1,7 @@
 #!/bin/bash
 
 ### Description ###
-# Choose between minifying / optimizing static or dynamic website assets
-# For static - you can choose between minifying / optimizing a single file or all files in a directory
-    # Selecting all files assumes build process for deployment to 'Google Firebase' and the script...
-        # creates production branch
-        # initializes new firebase project
-        # commits all files
-# For dynamic - the script creates a production branch and minifies / optimizes all files by file type
-### ###
-
-### Usage ###
-# You can just create an alias for the script in '.bashrc' and run it from a terminal
-    # alias buildwebproject='/path/to/./build_web_project.sh'
-    # $ buildwebproject
-# You can create a symbolic link to the script from your home directory
-    # ~$ ln -s /path/to/build_web_project.sh
-    # ~$ ./build_web_project.sh
+# Minify / optimize a file or all files in a directory, depending on filetype
 ### ###
 
 filetype=$(echo "$1" | tr '[:upper:]' '[:lower:]')
