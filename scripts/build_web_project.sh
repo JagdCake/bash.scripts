@@ -114,5 +114,10 @@ usage() {
 }
 
 dependency_check
-main_menu
+
+if [ $# -ne 3 ]; then
+    usage
+else
+    minify_optimize
+fi
 
