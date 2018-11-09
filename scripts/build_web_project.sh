@@ -24,7 +24,7 @@ input="$2"
 output_dir="$3"
 
 dependency_check() {
-    dependencies=(git html-minifier terser svgo optipng fzf)
+    dependencies=(git html-minifier terser svgo optipng)
 
     for dependency in "${dependencies[@]}"; do
         if [ ! $(which "$dependency" 2>/dev/null) ]; then
