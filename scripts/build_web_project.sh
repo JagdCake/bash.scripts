@@ -19,7 +19,7 @@
     # ~$ ./build_web_project.sh
 ### ###
 
-filetype="$1"
+filetype=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 input="$2"
 output_dir="$3"
 
