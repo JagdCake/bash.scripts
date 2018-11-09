@@ -67,8 +67,13 @@ minify_svg() {
     fi
 }
 
-minify_all_dynamic() {
-    file_extension=$(echo "$file" | awk -F . '{if (NF>1) {print $NF}}')
+optimize_png() {
+    if [ -f "$input" ]; then
+        optipng -o5 "$input" -out "$output_dir"/$(get_filename)
+    elif [ -d "$input" ]; then
+        optipng -o5 "$input"/*.png -dir "$output_dir"/
+    fi
+}
 
     if [[ "$file_extension" == 'ejs' ]]; then
         html-minifier --input-dir ./ --output-dir ./ --case-sensitive --collapse-whitespace --remove-comments --minify-css
