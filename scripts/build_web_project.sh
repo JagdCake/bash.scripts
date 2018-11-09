@@ -38,6 +38,10 @@ dependency_check() {
     fi
 }
 
+get_filename() {
+    echo "$input" | awk -F'/' '{ print $NF }'
+}
+
 minify_html() {
     # check if the input is a file or a directory
     if [[ -f "$input" ]]; then
