@@ -19,8 +19,9 @@
     # ~$ ./build_web_project.sh
 ### ###
 
-input="$1"
-output_dir="$2"
+filetype="$1"
+input="$2"
+output_dir="$3"
 
 dependency_check() {
     dependencies=(git html-minifier terser svgo optipng fzf)
