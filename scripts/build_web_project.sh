@@ -47,7 +47,7 @@ minify_html() {
     if [[ -f "$input" ]]; then
         html-minifier "$input" -o "$output_dir"/$(get_filename) --case-sensitive --collapse-whitespace --remove-comments --minify-css
     elif [[ -d "$input" ]]; then
-        html-minifier --input-dir "$input" --output-dir "$output_dir"/ --file-ext "$file_extension" --case-sensitive --collapse-whitespace --remove-comments --minify-css
+        html-minifier --input-dir "$input" --output-dir "$output_dir"/ --file-ext "$filetype" --case-sensitive --collapse-whitespace --remove-comments --minify-css
     fi
 }
 
