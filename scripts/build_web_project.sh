@@ -45,7 +45,7 @@ get_filename() {
 minify_html() {
     # check if the input is a file or a directory
     if [[ -f "$input" ]]; then
-        html-minifier "$input" -o "$output_dir"/"$input" --case-sensitive --collapse-whitespace --remove-comments --minify-css
+        html-minifier "$input" -o "$output_dir"/$(get_filename) --case-sensitive --collapse-whitespace --remove-comments --minify-css
     elif [[ -d "$input" ]]; then
         html-minifier --input-dir "$input" --output-dir "$output_dir"/ --file-ext "$file_extension" --case-sensitive --collapse-whitespace --remove-comments --minify-css
     fi
@@ -53,7 +53,7 @@ minify_html() {
 
 minify_js() {
     if [ -f "$input" ]; then
-        terser "$input" -o "$output_dir"/min."$input" --compress --mangle
+        terser "$input" -o "$output_dir"/min.$(get_filename) --compress --mangle
     elif [ -d "$input" ]; then
         terser "$input" -o "$output_dir" --compress --mangle
     fi
