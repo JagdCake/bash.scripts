@@ -36,6 +36,14 @@ minify_html() {
     fi
 }
 
+minify_css() {
+    if [[ -f "$input" ]]; then
+        csso "$input" -o "$output_dir"/$(get_filename)
+    elif [[ -d "$input" ]]; then
+        cat "$input"/*.css | csso -o "$output_dir"/minified.css
+    fi
+}
+
 minify_js() {
     if [ -f "$input" ]; then
         terser "$input" -o "$output_dir"/min.$(get_filename) --compress --mangle
@@ -63,6 +71,8 @@ optimize_png() {
 minify_optimize() {
     if [[ "$filetype" = 'html' || "$filetype" = 'ejs' ]]; then
         minify_html
+    elif [[ "$filetype" = 'css' ]]; then
+        minify_css
     elif [[ "$filetype" = 'js' ]]; then
         minify_js
     elif [[ "$filetype" = 'svg' ]]; then
