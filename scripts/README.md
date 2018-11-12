@@ -103,18 +103,8 @@
 </ul>
 
 <h1>build_web_project.sh</h1>
-<p>Dependencies: git, html-minifier, terser, svgo, optipng, fzf</p>
+<p>Dependencies: git, html-minifier, csso-cli, terser, svgo, optipng</p>
 
 <ul>
-  <li>Choose between minifying / optimizing static or dynamic website assets</li>
-  <li>For static - you can choose between minifying / optimizing a single file or all files in a directory</li>
-  <ul>
-    <li>Selecting all files assumes build process for deployment to 'Google Firebase' and the script…</li>
-        <ul>
-          <li>creates production branch</li>
-          <li>initializes new firebase project</li>
-          <li>commits all files</li>
-        </ul>
-    </ul>
-<li>For dynamic - the script creates a production branch and minifies / optimizes all files by file type</li>
+  <li>Minify / optimize a file or all files in a directory, depending on filetype</li>
 </ul>
