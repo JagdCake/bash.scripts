@@ -104,7 +104,7 @@ usage() {
   printf "Usage:\n"
   printf "  ./build_web_project.sh [FILETYPE] [INPUT FILE/DIR] [OUTPUT DIR]\n\n"
   printf "Supported filetypes:\n"
-  printf "  HTML, EJS, JS, SVG, PNG\n\n"
+  printf "  HTML, EJS, CSS, JS, SVG, PNG\n\n"
   printf "\n"
 }
 
