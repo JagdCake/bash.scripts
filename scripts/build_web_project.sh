@@ -9,7 +9,7 @@ input="$2"
 output_dir="$3"
 
 dependency_check() {
-    dependencies=(git html-minifier csso-cli terser svgo optipng)
+    dependencies=(git html-minifier csso terser svgo optipng)
 
     for dependency in "${dependencies[@]}"; do
         if [ ! $(which "$dependency" 2>/dev/null) ]; then
