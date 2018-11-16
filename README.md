@@ -4,5 +4,5 @@
 
 <p>And while they are very personalized there are options below the 'description' and 'usage' sections in every script file. The descriptions are also available in the 'scripts' folder's 'README' along with information about any dependencies.</p>
 
-<p>I only use <a href="https://solus-project.com/">Solus</a>, so I can't guarantee that the scripts will run properly on any other distro.</p>
+<p>I only use <a href="https://getsol.us/">Solus</a>, so I can't guarantee that the scripts will run properly on any other distro.</p>
 
