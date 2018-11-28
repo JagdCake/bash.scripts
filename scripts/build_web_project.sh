@@ -68,6 +68,14 @@ optimize_png() {
     fi
 }
 
+usage() {
+  printf "Usage:\n"
+  printf "  ./build_web_project.sh [FILETYPE] [INPUT FILE/DIR] [OUTPUT DIR]\n\n"
+  printf "Supported filetypes:\n"
+  printf "  HTML, EJS, CSS, JS, SVG, PNG\n\n"
+  printf "\n"
+}
+
 minify_optimize() {
     if [[ "$filetype" = 'html' || "$filetype" = 'ejs' ]]; then
         minify_html
@@ -80,18 +88,12 @@ minify_optimize() {
     elif [[ "$filetype" = 'png' ]]; then
         optimize_png
     else
-        echo "Unsupported file format"
-        exit
+        printf "Unsupported file format: \"$filetype\"\n\n"
+        usage
+        exit 1
     fi
 }
 
-usage() {
-  printf "Usage:\n"
-  printf "  ./build_web_project.sh [FILETYPE] [INPUT FILE/DIR] [OUTPUT DIR]\n\n"
-  printf "Supported filetypes:\n"
-  printf "  HTML, EJS, CSS, JS, SVG, PNG\n\n"
-  printf "\n"
-}
 
 dependency_check
 
