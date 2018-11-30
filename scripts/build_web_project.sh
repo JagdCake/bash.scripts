@@ -48,7 +48,9 @@ minify_js() {
     if [ -f "$input" ]; then
         terser "$input" -o "$output_dir"/min.$(get_filename) --compress --mangle
     elif [ -d "$input" ]; then
-        terser "$input" -o "$output_dir" --compress --mangle
+        # had to create a temp file because process substitution didn't work here (but it works on the command line)
+        cat "$input"/*.js > /tmp/all.js
+        terser /tmp/all.js -o "$output_dir"/min.all.js --compress --mangle
     fi
 }
 
