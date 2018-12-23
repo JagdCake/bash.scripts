@@ -5,6 +5,15 @@
 # Decide if you want to start / stop tracking time, display a summary or correct tracked time
 ### ###
 
+dependency_check() {
+    if [ ! $(which timew 2>/dev/null) ]; then
+        echo "Dependency: \"timewarrior\" is not installed."
+        exit 1
+    fi
+}
+
+dependency_check
+
 # choose what to track with an argument — learn, work, workout
 tag="$1"
 
