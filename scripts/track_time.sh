@@ -30,7 +30,35 @@ else
     options=("Stop $noun")
 fi
 
-options+=("Summary" "Quit")
+options+=("Summary" "Corrections" "Quit")
+
+corrections() {
+    timew summary :ids
+    read -p "Correct entry with ID: " id
+
+    select correction in "Change start time" "Change end time" "Shorten" "Lengthen" "Cancel"; do
+        case "$correction" in
+            "Change start time" )
+                read -p "Start time: " correct_time
+                timew start "$id" "$correct_time"
+                break;;
+            "Change end time" )
+                read -p "End time: " correct_time
+                timew stop "$id" "$correct_time"
+                break;;
+            "Shorten" )
+                read -p "Shorten by: " correct_time
+                timew shorten "$id" "$correct_time"
+                break;;
+            "Lengthen" )
+                read -p "Lengthen by: " correct_time
+                timew lengthen "$id" "$correct_time"
+                break;;
+            "Cancel" )
+                return;;
+        esac
+    done
+}
 
 # select what you want to do
 select option in "${options[@]}"; do
@@ -43,6 +71,9 @@ select option in "${options[@]}"; do
             break;;
         'Summary' )
             timew summary year "$tag"
+            break;;
+        'Corrections' )
+            corrections
             break;;
         "Quit" )
             exit;;
