@@ -21,8 +21,6 @@ fi
 # check if timewarrior is tracking something
 timew >/dev/null 2>&1
 
-# start / stop tracking time; show a summary; options to correct tracked time; quit
-
 # show a "start" option only if nothing is being tracked
 if [ $? -ne 0 ]; then
     options=("Start $noun")
@@ -60,7 +58,6 @@ corrections() {
     done
 }
 
-# select what you want to do
 select option in "${options[@]}"; do
    case "$option" in
         "Start $noun" )
