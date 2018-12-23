@@ -18,6 +18,37 @@ elif [[ "$tag" == 'workout' || "$tag" == 'workout_off_day' ]]; then
     fi
 fi
 
-# select what you want to do
+# check if timewarrior is tracking something
+timew >/dev/null 2>&1
+
 # start / stop tracking time; show a summary; options to correct tracked time; quit
+
+# show a "start" option only if nothing is being tracked
+if [ $? -ne 0 ]; then
+    options=("Start $noun")
+else
+    options=("Stop $noun")
+fi
+
+options+=("Summary" "Quit")
+
+# select what you want to do
+select option in "${options[@]}"; do
+   case "$option" in
+        "Start $noun" )
+            timew start "$tag"
+            break;;
+        "Stop $noun" )
+            timew stop "$tag"
+            break;;
+        'Summary' )
+            timew summary year "$tag"
+            break;;
+        "Quit" )
+            exit;;
+    esac
+done
+
+# rerun the script to update the options 
+~/Documents/code.github/bash.scripts/scripts/./track_time.sh "$tag"
 
