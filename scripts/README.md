@@ -108,3 +108,11 @@
 <ul>
   <li>Minify / optimize a file or all files in a directory, depending on filetype</li>
 </ul>
+
+<h1>track_time.sh</h1>
+<p>Dependencies: timewarrior</p>
+
+<ul>
+  <li>Choose between tracking time — spent learning, working or working out</li>
+  <li>Decide if you want to start / stop tracking time, display a summary or correct tracked time</li>
+</ul>

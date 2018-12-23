@@ -1,5 +1,10 @@
 #!/bin/bash
 
+### Description ###
+# Choose between tracking time — spent learning, working or working out
+# Decide if you want to start / stop tracking time, display a summary or correct tracked time
+### ###
+
 # choose what to track with an argument — learn, work, workout
 tag="$1"
 
