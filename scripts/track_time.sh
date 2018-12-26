@@ -92,5 +92,5 @@ select option in "${options[@]}"; do
 done
 
 # rerun the script to update the options 
-~/Documents/code.github/bash.scripts/scripts/./track_time.sh "$tag"
+~/Documents/my_github/shell_scripts/scripts/./track_time.sh "$tag"
 
