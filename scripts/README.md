@@ -39,7 +39,7 @@
       <li>If you've already logged your weight for the week:</li>
         <ul>
             <li>show the change in weight gain / loss (in kilograms and pounds) from the start </li>
-            <li>show the change in weight gain / loss (in kilograms and pounds) since last week</li>
+            <li>show the change in weight gain / loss (in kilograms and pounds) since the last time weight was recorded</li>
             <li>show the weight</li>
         </ul>
   </ul>
