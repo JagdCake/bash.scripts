@@ -15,17 +15,17 @@
     #   if [ -z $1 ]; then
     #       /path/to/./workspace.sh
     #   else
-    #       echo $1 | /path/to/./workspace.sh    
+    #       echo $1 | /path/to/./workspace.sh
     #   fi
     # }
-    # $ workspace [select menu digit] 
+    # $ workspace [select menu digit]
     # for example, type 'workspace 1' to switch to workspace 'Home'
 # You can create a symbolic link to the script from your home directory
     # ~$ ln -s /path/to/workspace.sh
     # ~$ ./workspace.sh
 # Using keyboard shortcuts is the most convenient method
     # open the keyboard shortcuts settings window and add a custom shortcut for every workspace
-    # for the 'Command' field use - 'bash -c "echo [select menu digit] | /path/to/workspace.sh"' 
+    # for the 'Command' field use - 'bash -c "echo [select menu digit] | /path/to/workspace.sh"'
     # for example:
         # Name: Switch to Workspace Home
         # Command: bash -c "echo 1 | /path/to/workspace.sh"
@@ -83,8 +83,8 @@ switch_to() {
     if workspace_is_active $workspace_number; then
         xdotool set_desktop $workspace_number
     else
-        xdotool set_desktop $workspace_number 
-        workspace_commands $workspace_number 
+        xdotool set_desktop $workspace_number
+        workspace_commands $workspace_number
     fi
 }
 
@@ -95,7 +95,7 @@ switch_background() {
         gsettings set org.gnome.desktop.background picture-uri file://"$workspace_2_bg"
     elif [ $workspace -eq 2 ]; then
         gsettings set org.gnome.desktop.background picture-uri file://"$workspace_3_bg"
-    elif [ $workspace -eq 3 ]; then 
+    elif [ $workspace -eq 3 ]; then
         gsettings set org.gnome.desktop.background picture-uri file://"$workspace_4_bg"
     elif [ $workspace -eq 4 ]; then
         gsettings set org.gnome.desktop.background picture-uri file://"$workspace_5_bg"
@@ -106,11 +106,11 @@ switch_workspace() {
     echo 'Choose a workspace:'
     select workspace_name in ${workspace_names[@]} "Cancel"; do
         case "$workspace_name" in
-            ${workspace_names[0]} ) 
+            ${workspace_names[0]} )
                 workspace=0
                 switch_to $workspace
                 break;;
-            ${workspace_names[1]} ) 
+            ${workspace_names[1]} )
                 workspace=1
                 switch_to $workspace
                 break;;
