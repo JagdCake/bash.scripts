@@ -33,7 +33,7 @@
 ### ###
 
 ### Options ###
-workspace_names=(Home Work Read Movie CTRL)
+workspace_names=(Home Work Write Movie Stats)
 # if using terminator, it's better to set any custom commands you want to run on launch in the layout options
 workspace_commands() {
     if [ $1 -eq 0 ]; then
