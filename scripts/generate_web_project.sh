@@ -38,8 +38,8 @@ option_2_hidden_files=("/home/jagdcake/Documents/web_dev/1_templates/static_site
 option_3_hidden_files=()
 
 # files and folders to (git)ignore
-option_1_ignore=("TODO" "config.js" "node_modules/")
-option_2_ignore=("TODO" "node_modules/")
+option_1_ignore=("TODO" "config.js" "node_modules/" "main.css")
+option_2_ignore=("TODO" "node_modules/" "main.css")
 option_3_ignore=()
 
 # messages to show after project creation
