@@ -56,7 +56,7 @@ packages_to_install=('express' 'express-session' 'ejs' 'pg' 'pg-hstore' 'sequeli
 dependency_check() {
     if [ ! $(which git 2>/dev/null) ]; then
         echo "Dependency: \"git\" is not installed."
-        exit
+        exit 1
     fi
 }
 
