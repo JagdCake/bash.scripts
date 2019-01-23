@@ -39,7 +39,7 @@ option_3_hidden_files=()
 
 # files and folders to (git)ignore
 option_1_ignore=("TODO" "config.js" "node_modules/")
-option_2_ignore=()
+option_2_ignore=("TODO" "node_modules/")
 option_3_ignore=()
 
 # messages to show after project creation
