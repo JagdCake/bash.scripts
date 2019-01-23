@@ -106,12 +106,12 @@ init_git_and_message() {
 }
 
 config_tailwind() {
-    css_file="$1"
+    path_to_css="$1"
 
     # create a tailwind config file
     ./node_modules/.bin/tailwind init ./tailwind.js
     # process the CSS
-    ./node_modules/.bin/tailwind build "$css_file" -c ./tailwind.js -o "$css_file"
+    ./node_modules/.bin/tailwind build "$path_to_css"/tailwind.css -c ./tailwind.js -o "$path_to_css"/main.css
 }
 
 
@@ -126,12 +126,12 @@ generate_project() {
 		copy_template_over "$option_1_files_dir" option_1_hidden_files
 		$package_manager init && $package_manager $verb "${packages_to_install[@]}" &&
         $package_manager $verb "${dev_packages_to_install[@]}" --dev &&
-        config_tailwind ./public/css/main.css
+        config_tailwind ./public/css/
 		init_git_and_message option_1_ignore "$option_1_message"
 	elif [ $choice -eq 2 ]; then
 		copy_template_over "$option_2_files_dir" option_2_hidden_files
 		$package_manager init && $package_manager $verb "${dev_packages_to_install[@]}" --dev &&
-        config_tailwind ./css/main.css
+        config_tailwind ./css/
 		init_git_and_message option_2_ignore "$option_2_message"
 	elif [ $choice -eq 3 ]; then
 		copy_template_over "$option_3_files_dir" option_3_hidden_files
