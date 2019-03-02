@@ -32,7 +32,7 @@ font_size='20' # in pts (probably)
 line_height='150' # percentage of the font size, default is '120', for double spaced text use '240'
 character_encoding='UTF-8'
 
-convert_options="--minimum-line-height "$line_height" --pdf-default-font-size "$font_size" --pdf-hyphenate --pdf-page-numbers --pdf-standard-font "$font" --input-encoding "$character_encoding""
+convert_options="--minimum-line-height "$line_height" --pdf-default-font-size "$font_size" --pdf-hyphenate --pdf-page-numbers --pdf-standard-font "$font" --input-encoding "$character_encoding" --level1-toc //h:h2"
 
 # app for editing notes
 app_add() {
