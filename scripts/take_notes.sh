@@ -100,9 +100,12 @@ add_topic() {
     touch "$notes"/"$topic".md
 }
 
+# use fuzzy search to select a topic
 select_topic() {
-    # use fuzzy search to select a topic
-    topic="$(ls -p "$notes" | grep -v / | awk -F'.md' '{ print $1 }' | fzf)"
+    topic="$(ls -p "$notes" | # append a slash to directories
+        grep -v / | # match files without a slash in the filename
+        awk -F'.md' '{ print $1 }' |
+        fzf)"
 }
 
 edit_notes() {
