@@ -32,7 +32,7 @@ font_size='20' # in pts (probably)
 line_height='150' # percentage of the font size, default is '120', for double spaced text use '240'
 character_encoding='UTF-8'
 
-convert_options="--minimum-line-height "$line_height" --pdf-default-font-size "$font_size" --pdf-hyphenate --pdf-page-numbers --pdf-standard-font "$font" --input-encoding "$character_encoding" --level1-toc //h:h2 --title Notes --authors $(whoami)"
+convert_options="--minimum-line-height $line_height --pdf-default-font-size $font_size --pdf-hyphenate --pdf-page-numbers --pdf-standard-font $font --input-encoding $character_encoding --level1-toc //h:h2 --title Notes --authors $(whoami)"
 
 # app for editing notes
 app_add() {
@@ -56,11 +56,11 @@ app_open_pdf() {
 ### ###
 
 dependency_check() {
-    if [ ! $(which fzf 2>/dev/null) ]; then
+    if [ ! "$(which fzf 2>/dev/null)" ]; then
         echo "Dependency: \"fzf\" is not installed."
-        exit
-    elif [ ! $(which calibre 2>/dev/null) ]; then
-        echo -e "Dependency: \"calibre\" is not installed.\nYou won't be able to convert notes to PDF.\n"
+        exit 1
+    elif [ ! "$(which calibre 2>/dev/null)" ]; then
+        echo -e "Dependency: \"calibre\" is not installed.\\nYou won't be able to convert notes to PDF.\\n"
     fi
 }
 
@@ -74,15 +74,15 @@ generate_format() {
 
     title=$(echo "$title" | sed 's/^[ \t]*//;s/[ \t]*$//')
 
-    echo "## "$title"" >> "$notes"/"$topic".md
-    echo -e "*$(date)*\n" >> "$notes"/"$topic".md
-    echo -e "- \n" >> "$notes"/"$topic".md
-    echo -e "Source: <link here>\n" >> "$notes"/"$topic".md
+    echo "## $title" >> "$notes/$topic".md
+    echo -e "*$(date)*\\n" >> "$notes/$topic".md
+    echo -e "- \\n" >> "$notes/$topic".md
+    echo -e "Source: <link here>\\n" >> "$notes/$topic".md
 }
 
 add_notes() {
     generate_format
-    app_add "$notes"/"$topic".md
+    app_add "$notes/$topic".md
 }
 
 add_topic() {
@@ -97,7 +97,7 @@ add_topic() {
     topic=$(echo "$topic" | sed 's/^[ \t]*//;s/[ \t]*$//')
 
     # 'touch' doesn't overwrite already existing files
-    touch "$notes"/"$topic".md
+    touch "$notes/$topic".md
 }
 
 # use fuzzy search to select a topic
@@ -109,13 +109,13 @@ select_topic() {
 }
 
 edit_notes() {
-    number_of_lines=$(cat "$notes"/"$topic".md | wc -l)
+    number_of_lines=$(cat "$notes/$topic".md | wc -l)
 
     if [ "$number_of_lines" -ge 7 ]; then
-        note_title=$(cat "$notes"/"$topic".md | grep '##' | awk -F'##' '{ print $2 }' | awk '{$1=$1};1' | fzf)
+        note_title=$(grep '##' "$notes/$topic".md | awk -F'##' '{ print $2 }' | awk '{$1=$1};1' | fzf)
         if [ $? -eq 0 ]; then
-            line=$(grep -n "$note_title" "$notes"/"$topic".md | awk -F':' '{ print $1 }')
-            app_edit "$line" "$notes"/"$topic".md
+            line=$(grep -n "$note_title" "$notes/$topic".md | awk -F':' '{ print $1 }')
+            app_edit "$line" "$notes/$topic".md
         fi
     else
         echo -e "\n\e[48;5;202m \e[38;5;231mFile is either empty or not formatted properly! \e[0m\e[0m\n"
@@ -123,8 +123,8 @@ edit_notes() {
 }
 
 create_pdf() {
-    pdf_file=""$notes"/pdf_notes/"$topic".pdf"
-    md_file=""$notes"/"$topic".md"
+    pdf_file="$notes/pdf_notes/$topic.pdf"
+    md_file="$notes/$topic.md"
 
     # create pdf file only if one doesn't already exist or if it's not up to date with the md file
     if [[ -f "$pdf_file" && ! "$md_file" -nt "$pdf_file" ]]; then
