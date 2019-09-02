@@ -1,3 +1,5 @@
+## Archived because I plan to rewrite some of the scripts I use most often in Go / Haskell.
+
 <h1 align="center">Description</h1>
 
 <p>Most of the scripts here are simplistic, e.g. for closing applications, a pomodoro timer, logging, etc.</p>
